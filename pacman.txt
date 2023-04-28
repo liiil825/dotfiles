@@ -1,2 +1,3 @@
+fzf # amazing filter
 gum # for git commit
 zoxide
