@@ -4,7 +4,15 @@ os:
   openCommand: ""
 gui:
   showIcons: true
+customCommands:
+  - key: z
+    command: ~/.config/bin/gc
+    context: files
+    loadingText: Commitizen prompt
+    subprocess: true
+
 git:
   paging:
-    pager: detal --dark paging=never
-    useConfig: true
+    colorArg: always
+    useConfig: false
+    # pager: detal --dark paging=never
