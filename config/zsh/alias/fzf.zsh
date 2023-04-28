@@ -1,3 +1,8 @@
+if [[ $(uname -n) == "archlinux" ]]; then
+  source /usr/share/fzf/key-bindings.zsh
+elif [[ $(uname -n) == *"-opencloudos" ]]; then
+fi
+
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 
 # export FZF_DEFAULT_OPTS="\
@@ -26,5 +31,4 @@ export FZF_TMUX_OPTS="-p"
 
 alias f='cd $(fd . ~ -t d | fzf)'
 alias fc='cd $(fd . ~/.config -t d | fzf)'
-source /usr/share/fzf/key-bindings.zsh
 eval "$(zoxide init zsh)"

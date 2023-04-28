@@ -1,5 +1,6 @@
 #! /usr/bin/env zsh
 if [[ $(uname -n) == *"-opencloudos" ]]; then
+  export PATH=$PATH:$HOME/.local/bin/
   return
 fi
 if [[ "$(uname)" == "Darwin" ]]; then
