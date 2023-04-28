@@ -53,7 +53,9 @@ export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-darwin
-export PATH=/usr/local/opt/python@3.9/bin/:$PATH
+export PATH=$PATH:/usr/local/opt/python@3.9/bin/
+
+export PATH=$PATH:$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin # ~/.config/tmux/plugins
 
 export RANGER_ZLUA=$ZSH_CUSTOM/plugins/z.lua/z.lua
 

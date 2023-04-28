@@ -1,10 +1,8 @@
 #! /usr/bin/env zsh
+ 
 if [[ $(uname -n) == *"-opencloudos" ]]; then
   TERM="xterm-256color"
-  return
-fi
-
-if [[ $(uname) == "Linux" ]]; then
+elif [[ $(uname) == "Linux" ]]; then
   # linux 下设置错误的 TERM
   # 会在命令行执行后，下一行会多显示一次
   # 修复 archlinux 下的 tmux 256-color 显示错误

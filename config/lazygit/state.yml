@@ -1,7 +1,7 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/david/Github/dotfiles-joshmedeski
 - /home/david/repos/dotfiles
+- /home/david/Github/dotfiles-joshmedeski
 - /home/david/.config/nvim/lua/user
 - /home/david/.config/nvim
 - /home/david/Github/gcc
