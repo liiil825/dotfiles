@@ -1,0 +1,1 @@
+xxd https://aur.archlinux.org/cgit/aur.git/snapshot/xxd-standalone.tar.gz

@@ -1,0 +1,10 @@
+os:
+  editCommand: "" # see 'Configuring File Editing' section
+  editCommandTemplate: "{{editor}} {{filename}}"
+  openCommand: ""
+gui:
+  showIcons: true
+git:
+  paging:
+    pager: detal --dark paging=never
+    useConfig: true
