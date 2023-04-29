@@ -1,12 +1,14 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/david/repos/dotfiles
+- /home/david/Github/nvimacs
+- /home/david/repos/vite-vue-starter
+- /home/david/notes
 - /home/david/Github/dotfiles-joshmedeski
 - /home/david/.config/nvim/lua/user
 - /home/david/.config/nvim
 - /home/david/Github/gcc
 - /home/david/Github/chatgpt-web
-- /home/david/notes
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false
