@@ -48,12 +48,13 @@ key_bindings:
   - { key: X, mods: Command, chars: "\x07x" } # kill the current pane
   - { key: Z, mods: Command, chars: "\x07z" } # toggle zoom state of the current tmux pane
   - { key: Tab, mods: Command, chars: "\x07n" } # switch to next tmux window
-  # - { key: Grave, mods: Control, chars: "\x07p" } # switch to previous tmux window
+  - { key: Grave, mods: Control, chars: "\x07p" } # switch to previous tmux window
+  - { key: D, mods: Command, chars: "\x07F" } # prop tmux
   - { key: Comma, mods: Command, chars: "\x07," } # rename the current tmux window
-  - { key: LBracket, mods: Command, chars: "\x0f" } # navigate back in vim (ctrl+o)
-  - { key: LBracket, mods: Command|Shift, chars: "\x07p" } # switch to next tmux window
-  - { key: RBracket, mods: Command, chars: "\x09" } # navigate forward in vim (ctrl+i)
-  - { key: RBracket, mods: Command|Shift, chars: "\x07n" } # switch to previous tmux window
+  # - { key: LBracket, mods: Command|Shift, chars: "\x07p" } # switch to next tmux window
+  # - { key: RBracket, mods: Command|Shift, chars: "\x07n" } # switch to previous tmux window
+  # - { key: LBracket, mods: Command, chars: "\x0f" } # navigate back in vim (ctrl+o)
+  # - { key: RBracket, mods: Command, chars: "\x09" } # navigate forward in vim (ctrl+i)
   - { key: Semicolon, mods: Command, chars: "\x07:" } # enter the tmux command prompt
   - { key: Key1, mods: Control, chars: "\x071" } # select tmux window 1
   - { key: Key2, mods: Control, chars: "\x072" } #                ... 2
@@ -76,4 +77,4 @@ key_bindings:
   - { key: Key0, mods: Alt, chars: "\x07s9" } #                ... 9
 
 import:
-  - ~/.config/alacritty/theme/snazzy.yaml
+  - ~/.config/alacritty/themes/themes/snazzy.yaml
