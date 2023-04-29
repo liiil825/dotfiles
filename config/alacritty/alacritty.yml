@@ -33,7 +33,6 @@ window:
 # \x07 = control-g (the default tmux prefix)
 
 key_bindings:
-  - { key: Return, mods: Shift, action: SpawnNewInstance }
   - { key: V, mods: Command, action: Paste }
   - { key: C, mods: Command, action: Copy }
   - { key: LBracket, mods: Alt, chars: "\x07sk\x0a" }
@@ -77,4 +76,4 @@ key_bindings:
   - { key: Key0, mods: Alt, chars: "\x07s9" } #                ... 9
 
 import:
-  - ~/.config/alacritty/theme/snazzy.yml
+  - ~/.config/alacritty/theme/snazzy.yaml

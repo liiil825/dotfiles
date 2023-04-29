@@ -24,7 +24,7 @@ fzf-history-widget-accept() {
   zle accept-line
 }
 zle     -N     fzf-history-widget-accept
-bindkey '^R'   fzf-history-widget
+bindkey '^R'   fzf-history-widget-accept
 
 export FZF_CTRL_R_OPTS="--reverse"
 
