@@ -76,5 +76,5 @@ key_bindings:
   - { key: Key9, mods: Alt, chars: "\x07s8" } #                ... 9
   - { key: Key0, mods: Alt, chars: "\x07s9" } #                ... 9
 
-# import:
-#   - ~/.config/alacritty/aw/current.yml
+import:
+  - ~/.config/alacritty/theme/snazzy.yml
