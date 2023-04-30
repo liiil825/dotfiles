@@ -1,7 +1,4 @@
-#! /usr/bin/env zsh
-if [[ $(uname -n) == *"-opencloudos" ]]; then
-    return
-fi
+#!/usr/bin/env zsh
 
 if [[ $(uname) == "Darwin" ]]; then
     export ZPLUG_HOME=/usr/local/opt/zplug
@@ -19,7 +16,13 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug 'zsh-users/zsh-autosuggestions'
 zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'mafredri/zsh-async', from:'github', use:'async.zsh'
+zplug load
 
+if [[ $(uname -n) == *"-opencloudos" ]]; then
+    return
+fi
+
+eval "$(zoxide init zsh)"
 if [[ -s "$HOME/.local/share/marker/marker.sh" ]]; then
     source "$HOME/.local/share/marker/marker.sh"
 else
@@ -27,6 +30,3 @@ else
     cd $HOME/.config/.marker && ./install.py
     cd -
 fi
-
-zplug load
-eval "$(zoxide init zsh)"
