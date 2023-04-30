@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 if [[ $(uname -n) == *"-opencloudos" ]]; then
     return
 fi
@@ -7,15 +9,10 @@ export NVM_DIR=$HOME/.nvm
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-if [[ ! -a ~/.zsh-async ]]; then
-    git clone git@github.com:mafredri/zsh-async.git ~/.zsh-async
-fi
-source ~/.zsh-async/async.zsh
 
 function load_nvm() {
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

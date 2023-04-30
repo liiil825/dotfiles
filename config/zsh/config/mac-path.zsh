@@ -1,5 +1,5 @@
 if [[ "$(uname)" == "Linux" ]]; then
-  return
+    return
 fi
 export UID=$(id -u)
 export GID=$(id -g)
@@ -45,8 +45,7 @@ export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
 
-export PATH=$PATH:/usr/local/opt/icu4c/bin
-export PATH=$PATH:/usr/local/opt/icu4c/sbin
+export PATH=$PATH:/usr/local/opt/icu4c/bin export PATH=$PATH:/usr/local/opt/icu4c/sbin
 export LDFLAGS="-L/usr/local/opt/icu4c/lib"
 export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
@@ -58,11 +57,3 @@ export PATH=$PATH:/usr/local/opt/python@3.9/bin/
 export PATH=$PATH:$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin # ~/.config/tmux/plugins
 
 export RANGER_ZLUA=$ZSH_CUSTOM/plugins/z.lua/z.lua
-
-function j() {
-    if [[ "$argv[1]" == "-"* ]]; then
-        z "$@"
-    else
-        cd "$@" 2> /dev/null || z "$@"
-    fi
-}
