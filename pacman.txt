@@ -1,4 +1,5 @@
+bat # A cat(1) clone with wings.
 fzf # amazing filter
 gum # for git commit
-starship
-zoxide
+starship # shell prompt
+zoxide # z

@@ -35,8 +35,8 @@ window:
 key_bindings:
   - { key: V, mods: Command, action: Paste }
   - { key: C, mods: Command, action: Copy }
-  - { key: LBracket, mods: Alt, chars: "\x07sk\x0a" }
-  - { key: RBracket, mods: Alt, chars: "\x07sj\x0a" }
+  # - { key: LBracket, mods: Alt, chars: "\x07sk\x0a" }
+  # - { key: RBracket, mods: Alt, chars: "\x07sj\x0a" }
   - { key: Backslash, mods: Command, chars: "\x07\\" } # split tmux window horizontally
   - { key: Minus, mods: Command, chars: "\x07-" } # split tmux window vertically
   - { key: G, mods: Command, chars: "\x07g" } # open git manager 'jesseduffield/lazygit'
