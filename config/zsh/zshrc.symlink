@@ -1,12 +1,12 @@
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_CUSTOM=~/.config/zsh # load.zsh 使用路径
-source "$ZSH_CUSTOM/load.zsh"
+export ZSH_CUSTOM=~/.config/zsh # load.zsh 使用路径
 
-plugins=(
-    git
-)
-if [[ $(uname) == "Darwin" ]]; then
-    plugins+=(brew)
-fi
+source $ZSH_CUSTOM/zgenom.zsh
 
-source $ZSH/oh-my-zsh.sh
+for the_file ($ZSH_CUSTOM/config/*.zsh); do
+    source $the_file
+done
+
+for the_file ($ZSH_CUSTOM/alias/*.zsh); do
+    source $the_file
+done
+source $ZSH_CUSTOM/aliases.zsh
