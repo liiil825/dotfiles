@@ -15,6 +15,13 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
+
+alias gaa='git add --all'
+alias gcl='git clone '
+alias gst='git status'
+alias ggl='git pull --no-edit'
+alias ggp='git push'
+
 alias md='mkdir -p'
 alias ra="ranger"
 alias rd=rmdir
