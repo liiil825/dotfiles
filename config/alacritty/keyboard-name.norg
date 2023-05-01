@@ -1,13 +1,12 @@
 | 符号   | 英文名     | 中文名   |
 | ------ | ---------- | -------- |
-| \      | Backslash  |          |
-| [      | LBracket   |          |
-| ]      | RBracket   |          |
-| ;      | Semicolon  |          |
-| :      | Colon      |          |
-| ,      | Comma      |          |
-| .      | Convert    |          |
-| -      | Minus      |          |
-| =      | Equals     |          |
+| \      | Backslash  | 反斜杠   |
+| [      | LBracket   | 左中括号 |
+| ]      | RBracket   | 右中括号 |
+| ;      | Semicolon  | 分号     |
+| :      | Colon      | 冒号     |
+| ,      | Comma      | 逗号     |
+| -      | Minus      | 小于号   |
+| =      | Equals     | 等于号   |
 | `      | Grave      |          |
 | ------ | ---------- | -------- |
