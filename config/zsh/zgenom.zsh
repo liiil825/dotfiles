@@ -34,10 +34,6 @@ if ! zgenom saved; then
     zgenom compile ~zplugs
 fi
 
-if [[ $(uname -n) == *"-opencloudos" ]]; then
-    return
-fi
-
 # fzf-tab
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
@@ -47,6 +43,9 @@ zstyle ':fzf-tab:complete:kill:argument-rest' fzf-flags '--preview-window=down:3
 zstyle ':fzf-tab:complete:kill:*' popup-pad 0 3
 
 eval "$(zoxide init zsh)"
+if [[ $(uname -n) == *"-opencloudos" ]]; then
+    return
+fi
 if [[ -s "$HOME/.local/share/marker/marker.sh" ]]; then
     source "$HOME/.local/share/marker/marker.sh"
 else
