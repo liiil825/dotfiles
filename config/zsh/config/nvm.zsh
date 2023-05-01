@@ -14,17 +14,13 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-function load_nvm() {
+load_nvm() {
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
     autoload -U add-zsh-hook
     add-zsh-hook chpwd load-nvmrc
 }
-# Initialize a new worker
-async_start_worker nvm_worker -n
-async_register_callback nvm_worker load_nvm
-async_job nvm_worker sleep 0.1
 
 load-nvmrc() {
     local node_version="$(nvm version)"
@@ -43,3 +39,5 @@ load-nvmrc() {
         nvm use default
     fi
 }
+
+zsh-defer load_nvm

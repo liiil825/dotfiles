@@ -6,3 +6,9 @@ show_path() {
     echo $PATH | tr ':' '\n'
 }
 zle -N show_path
+
+# bat
+export BAT_THEME='OneHalfDark'
+
+# man-pages
+export MANPAGER='sh -c "col -bx | bat -pl man --theme=Monokai\ Extended"'
