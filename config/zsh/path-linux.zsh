@@ -1,15 +1,17 @@
 #!/usr/bin/env zsh
+
 if [[ "$(uname)" == "Darwin" ]]; then
-  return
+    return
 fi
+
 export PATH=$PATH:$HOME/.config/bin/
 
 # ~/.config/tmux/plugins
 export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
 
 if [[ $(uname -n) == *"-opencloudos" ]]; then
-  export PATH=$PATH:$HOME/.local/bin/
-  return
+    export PATH=$PATH:$HOME/.local/bin/
+    return
 fi
 
 # go environment
