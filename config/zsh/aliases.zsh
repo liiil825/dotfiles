@@ -15,12 +15,15 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
-
 alias gaa='git add --all'
 alias gcl='git clone '
 alias gst='git status'
 alias ggl='git pull --no-edit'
 alias ggp='git push'
+
+alias f='cd $(fd . ~ -t d | fzf)'
+alias fc='cd $(fd . ~/.config -t d | fzf)'
+# alias fvim='vim $(fd . ~/.config -t d | fzf'
 
 alias md='mkdir -p'
 alias ra="ranger"
@@ -38,6 +41,10 @@ alias lart='ls -1Fcart'
 alias lrt='ls -1Fcrt'
 alias lsr='ls -lARFh' #Recursive list of files and directories
 alias lsn='ls -1'     #A column contains name of files and directories
+
+alias pacs='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | fzf --multi --ansi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
+alias pars='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /installed/d" | fzf --multi --ansi --preview "paru -Si {1}" | xargs -ro paru -S'
+alias pacr="pacman --color always -Q | cut -f 1 -d ' ' | fzf --multi --ansi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 
 alias p='pnpm'
 alias pi='pnpm i'

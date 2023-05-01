@@ -20,16 +20,13 @@ if [[ ! -d ~tplugs/tpm ]]; then
     git clone --depth 1 https://github.com/tmux-plugins/tpm.git ~tplugs/tpm
 fi
 
-local blue="\033[36;1;4m"
-local close="\033[0m"
-
-if ! command -v sharship >/dev/null 2>&1; then
-    echo -e "$blueinstall sharship$close"
+if ! command -v starship >/dev/null 2>&1; then
+    echo -e "\033[36;1;4m install starship...\033[0m"
     curl -sS https://starship.rs/install.sh | sh
 fi
 
 if ! command -v zoxide >/dev/null 2>&1; then
-    echo -e "$blueinstall zoxid$close"
+    echo -e "\033[36;1;4m install zoxid...\033[0m"
     if [[ $(uname) == "Linux" ]]; then
         curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
     elif [[ $(uname) == "Darwin" ]]; then
@@ -38,11 +35,7 @@ if ! command -v zoxide >/dev/null 2>&1; then
 fi
 
 if ! command -v fzf >/dev/null 2>&1; then
-    echo -e "$blueinstall fzf$close"
-    if [[ $(uname -n) == "archlinux" ]]; then
-        sudo pacman -S fzf
-    else
-        git clone --depth 1 https://github.com/junegunn/fzf.git ~repos/fzf
-        ~repos/fzf/install
-    fi
+    echo -e "\033[36;1;4m install fzf...\033[0m"
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~repos/fzf
+    ~repos/fzf/install
 fi
