@@ -10,3 +10,13 @@
     @code bash
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     @end
+** dwall
+   @code bash
+   sudo pacman -Sy xorg-xrandr feh cronie
+   git clone https://github.com/adi1090x/dynamic-wallpaper.git
+   cd dynamic-wallpaper
+   chmod +x install.sh
+   ./install.sh
+   @end
+   `No error, no warnning`, but it's *not working* on *hyprland*
+

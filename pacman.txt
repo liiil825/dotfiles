@@ -3,3 +3,6 @@ fzf # amazing filter
 gum # for git commit
 starship # shell prompt
 zoxide # z
+feh # To set wallpapers on WMs
+cron # To set a job for dwall
+xrandr # Only if you're using XFCE desktop
