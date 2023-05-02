@@ -62,6 +62,7 @@ alias vz='cd ~/.config/zsh && vim'
 
 alias gcls='git clone --depth 1 '
 alias grep='grep --color'
+alias gwl='git worktree list'
 alias cbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'
 
 alias show_tucp_port="sudo ss -tulpn"
