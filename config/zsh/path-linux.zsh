@@ -1,18 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ "$(uname)" == "Darwin" ]]; then
-    return
-fi
-
-export PATH=$PATH:$HOME/.config/bin/
-
-# ~/.config/tmux/plugins
-export PATH=$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
-
-if [[ $(uname -n) == *"-opencloudos" ]]; then
-    export PATH=$PATH:$HOME/.local/bin/
-    return
-fi
+[[ "$(uname)" == "Darwin" ]] && return
 
 # go environment
 export GO111MODULE=on
@@ -21,7 +9,6 @@ export GOPATH=$HOME/code/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # python path
-export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/.local/lib/python3.10/site-packages
 
 # python pyenv

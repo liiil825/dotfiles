@@ -1,7 +1,11 @@
+#!/usr/bin/env zsh
+
 # .zshenv is sourced on all invocations of the shell, unless the -f option is set.
 # It should contain commands to set the command search path, plus other important environment variables.
 # .zshenv' should not contain commands that produce output or assume the shell is attached to a tty.
 
+export ZSH_CUSTOM=~/.config/zsh # load.zsh 使用路径
+source $ZSH_CUSTOM/path.zsh
 # export DOTFILES="$(dirname "$(dirname "$(readlink "${(%):-%N}")")")"
 export CACHEDIR="$HOME/.local/share"
 # add a config file for ripgrep
@@ -13,6 +17,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/config"
 typeset -aU path
 
 export VISUAL=nvim
-export EDITOR=$VISUAL
-export GIT_EDITOR=$EDITOR
-. "$HOME/.cargo/env"
+export EDITOR=nvim
+export GIT_EDITOR=nvim
+
+[[ $(uname) == "Darwin" ]] && . "$HOME/.cargo/env"

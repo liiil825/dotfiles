@@ -1,6 +1,4 @@
-if [[ $(uname -n) == *"-opencloudos" ]]; then
-    return
-fi
+[[ $(uname -n) == *"-opencloudos" ]] && return
 
 export PROXYHOST=localhost
 export PROXYPORT=1080

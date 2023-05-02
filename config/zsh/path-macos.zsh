@@ -1,6 +1,7 @@
-if [[ "$(uname)" == "Linux" ]]; then
-    return
-fi
+#!/usr/bin/env zsh
+
+[[ "$(uname)" == "Linux" ]] && return
+
 export UID=$(id -u)
 export GID=$(id -g)
 
@@ -10,7 +11,6 @@ export PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
 export PATH=$PATH:/opt/local/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.config/bin
-export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/npm/bin
 
 export PATH=$(pyenv root)/shims:$PATH
@@ -33,7 +33,7 @@ export GO15VENDOREXPERIMENT=1
 export GOPROXY=https://goproxy.cn
 
 export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$PATH:$JAVA_HOME/bin
 
 export PATH=$PATH:/usr/local/opt/gettext/bin
 
@@ -51,10 +51,5 @@ export LDFLAGS="-L/usr/local/opt/icu4c/lib"
 export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
-export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-darwin
 export PATH=$PATH:/usr/local/opt/python@3.9/bin/
-
-export PATH=$PATH:$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin # ~/.config/tmux/plugins
-
-export RANGER_ZLUA=$ZSH_CUSTOM/plugins/z.lua/z.lua

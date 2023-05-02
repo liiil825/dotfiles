@@ -43,9 +43,9 @@ zstyle ':fzf-tab:complete:kill:argument-rest' fzf-flags '--preview-window=down:3
 zstyle ':fzf-tab:complete:kill:*' popup-pad 0 3
 
 eval "$(zoxide init zsh)"
-if [[ $(uname -n) == *"-opencloudos" ]]; then
-    return
-fi
+
+[[ $(uname -n) == *"-opencloudos" ]] && return
+
 if [[ -s "$HOME/.local/share/marker/marker.sh" ]]; then
     source "$HOME/.local/share/marker/marker.sh"
 else

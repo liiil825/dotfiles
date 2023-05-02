@@ -1,8 +1,6 @@
 #!/usr/bin/env zsh
 
-if [[ $(uname -n) == *"-opencloudos" ]]; then
-    return
-fi
+[[ $(uname -n) == *"-opencloudos" ]] && return
 
 export NVM_DIR=$HOME/.nvm
 
