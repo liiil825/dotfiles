@@ -17,16 +17,12 @@ if ! zgenom saved; then
 
     zgenom ohmyzsh plugins/sudo
     zgenom ohmyzsh plugins/extract
-    zgenom load --completion spwhitt/nix-zsh-completions
     zgenom ohmyzsh --completion plugins/docker-compose
     zgenom load zsh-users/zsh-completions
 
     zgenom load Aloxaf/fzf-tab
-    zgenom load chisui/zsh-nix-shell
     zgenom load zdharma-continuum/fast-syntax-highlighting
     zgenom load zsh-users/zsh-autosuggestions
-    # zgenom load zsh-users/zsh-history-substring-search
-    # zgenom load hlissner/zsh-autopair
     zgenom load romkatv/zsh-defer
 
     zgenom clean
