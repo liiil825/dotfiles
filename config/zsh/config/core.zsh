@@ -2,7 +2,8 @@
 
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
+set -o emacs
 
 show_path() {
     echo $PATH | tr ':' '\n'

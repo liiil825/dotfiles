@@ -27,7 +27,7 @@ fzf-history-widget-accept() {
     fzf-history-widget
     zle accept-line
 }
-zle     -N        fzf-history-widget-accept
+zle     -N     fzf-history-widget-accept
 bindkey '^R'   fzf-history-widget-accept
 
 fzf-man-widget() {

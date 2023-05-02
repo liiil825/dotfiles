@@ -7,7 +7,6 @@ mkdir -p ~zplugs
 
 source ~zplugs/zgenom/zgenom.zsh
 
-set -o emacs
 zgenom autoupdate  # every 7 days
 if ! zgenom saved; then
     echo "Creating a zgenom save"

@@ -2,9 +2,6 @@
 
 export PROXYHOST=localhost
 export PROXYPORT=1086
-# export PROXYHOST=
-# export PROXYPORT=1080
-
 # export all_proxy=socks5://$PROXYHOST:$PROXYPORT
 
 show_proxy () {
@@ -12,7 +9,6 @@ show_proxy () {
     echo http_proxy: $http_proxy
     echo https_proxy: $https_proxy
 }
-zle -N show_proxy
 
 set_proxy () {
     [[ $1 ]] && export PROXYPORT=$1
@@ -23,14 +19,11 @@ set_proxy () {
         export all_proxy=socks5://$PROXYHOST:$PROXYPORT
     fi
 }
-zle -N set_proxy
-
 unset_proxy () {
     unset http_proxy
     unset https_proxy
     unset all_proxy
 }
-zle -N unset_proxy
 
 mylocalip () {
     mylocalip="$(ifconfig | grep 'inet.*netmask.*broadcast')"
