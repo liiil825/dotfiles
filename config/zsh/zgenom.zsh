@@ -30,14 +30,6 @@ if ! zgenom saved; then
     zgenom compile ~zplugs
 fi
 
-# fzf-tab
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:*' fzf-bindings 'tab:accept'
-# zstyle ':fzf-tab:*' switch-group ',' '.'
-zstyle ':fzf-tab:complete:kill:argument-rest' fzf-preview 'ps --pid=$word -o cmd --no-headers -w -w'
-zstyle ':fzf-tab:complete:kill:argument-rest' fzf-flags '--preview-window=down:3:wrap'
-zstyle ':fzf-tab:complete:kill:*' popup-pad 0 3
-
 eval "$(zoxide init zsh)"
 
 [[ $(uname -n) == *"-opencloudos" ]] && return
