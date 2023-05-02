@@ -1,7 +1,7 @@
 [[ $(uname -n) == *"-opencloudos" ]] && return
 
 export PROXYHOST=localhost
-export PROXYPORT=1080
+export PROXYPORT=1086
 # export PROXYHOST=
 # export PROXYPORT=1080
 
