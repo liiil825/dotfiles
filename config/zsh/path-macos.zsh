@@ -27,7 +27,7 @@ export GOOS=darwin
 export GO15VENDOREXPERIMENT=1
 export GOPROXY=https://goproxy.cn
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=/usr/libexec/java_home
 export PATH=$PATH:$JAVA_HOME/bin
 
 export PATH=$PATH:/usr/local/opt/gettext/bin
@@ -49,8 +49,8 @@ export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
 export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-darwin
 export PATH=$PATH:/usr/local/opt/python@3.9/bin/
-
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-export PATH=$(pyenv root)/shims:$PATH
-export PYENV_ROOT=$(pyenv root)
-
+# python pyenv
+export PYENV_ROOT=$HOME/.pyenv
+command -v pyenv >/dev/null || export PATH=$PATH:$PYENV_ROOT/bin
+eval "$(pyenv init -)"
