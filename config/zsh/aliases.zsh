@@ -17,9 +17,12 @@ alias 9='cd -9'
 
 alias gaa='git add --all'
 alias gcl='git clone '
-alias gst='git status'
+alias gcls='git clone --depth 1 '
 alias ggl='git pull --no-edit'
 alias ggp='git push'
+alias grep='grep --color'
+alias gst='git status'
+alias gwl='git worktree list'
 
 alias f='cd $(fd . ~ -t d | fzf)'
 alias fc='cd $(fd . ~/.config -t d | fzf)'
@@ -60,9 +63,6 @@ alias vn='cd ~/.config/nvim/lua/user && vim'
 alias vt='cd ~/.config/tmux && vim tmux.conf'
 alias vz='cd ~/.config/zsh && vim'
 
-alias gcls='git clone --depth 1 '
-alias grep='grep --color'
-alias gwl='git worktree list'
 alias cbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'
 
 alias show_tucp_port="sudo ss -tulpn"
