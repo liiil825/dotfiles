@@ -15,10 +15,13 @@ show_proxy () {
 zle -N show_proxy
 
 set_proxy () {
-    export all_proxy=socks5://$PROXYHOST:$PROXYPORT
-    # export all_proxy=socks5h://$PROXYHOST:$PROXYPORT
-    # export http_proxy=http://$PROXYHOST:$PROXYPORT
-    # export https_proxy=https://$PROXYHOST:$PROXYPORT
+    [[ $1 ]] && export PROXYPORT=$1
+    if [[ $2 ]]; then
+        export http_proxy=http://$PROXYHOST:$PROXYPORT
+        export https_proxy=https://$PROXYHOST:$PROXYPORT
+    else
+        export all_proxy=socks5://$PROXYHOST:$PROXYPORT
+    fi
 }
 zle -N set_proxy
 

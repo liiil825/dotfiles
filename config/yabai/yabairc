@@ -18,6 +18,7 @@ yabai -m config window_gap 16
 # ignore these apps
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Alfred Preferences$" manage=off
+yabai -m rule --add app="^Clash for Windows$" manage=off
 yabai -m rule --add app="^Messages$" manage=off
 yabai -m rule --add app="^Music$" manage=off
 yabai -m rule --add app="Microsoft Teams$" manage=off

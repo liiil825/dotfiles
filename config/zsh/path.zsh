@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
+export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:$HOME/.config/bin/
 export PATH=$PATH:$HOME/.local/bin/
-export PATH=$PATH:/usr/local/sbin
 
 [[ $(uname -n) == *"-opencloudos" ]] && return
 

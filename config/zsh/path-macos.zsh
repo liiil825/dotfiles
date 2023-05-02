@@ -13,16 +13,11 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.config/bin
 export PATH=$PATH:$HOME/npm/bin
 
-export PATH=$(pyenv root)/shims:$PATH
-export PYENV_ROOT=$(pyenv root)
-
 export ANDROID=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID:$ANDROID/platform-tools
 export PATH=$PATH:$ANDROID/tools
 
 export PATH=$PATH:node_modules/.bin
-
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
 
 export GOROOT=/usr/local/go/
 export GOPATH=$HOME/.go
@@ -46,10 +41,16 @@ export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
 
-export PATH=$PATH:/usr/local/opt/icu4c/bin export PATH=$PATH:/usr/local/opt/icu4c/sbin
+export PATH=$PATH:/usr/local/opt/icu4c/bin
+export PATH=$PATH:/usr/local/opt/icu4c/sbin
 export LDFLAGS="-L/usr/local/opt/icu4c/lib"
 export CPPFLAGS="-I/usr/local/opt/icu4c/include"
 export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 
 export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-darwin
 export PATH=$PATH:/usr/local/opt/python@3.9/bin/
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+export PATH=$(pyenv root)/shims:$PATH
+export PYENV_ROOT=$(pyenv root)
+
