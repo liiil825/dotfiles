@@ -50,7 +50,3 @@ export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-darwin
 export PATH=$PATH:/usr/local/opt/python@3.9/bin/
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-# python pyenv
-export PYENV_ROOT=$HOME/.pyenv
-command -v pyenv >/dev/null || export PATH=$PATH:$PYENV_ROOT/bin
-eval "$(pyenv init -)"

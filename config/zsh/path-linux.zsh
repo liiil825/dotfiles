@@ -11,10 +11,5 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # python path
 export PATH=$PATH:$HOME/.local/lib/python3.10/site-packages
 
-# python pyenv
-export PYENV_ROOT=$HOME/.pyenv
-command -v pyenv >/dev/null || export PATH=$PATH:$PYENV_ROOT/bin
-eval "$(pyenv init -)"
-
 # rust
 export PATH=$PATH:$HOME/.cargo/bin/
