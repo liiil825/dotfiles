@@ -57,9 +57,12 @@ alias pis='pnpm i --save'
 
 alias show_tucp_port="sudo ss -tulpn"
 
-alias v="nvim"
-alias vi="nvim"
-alias vim="nvim"
+alias ta='tmux attach-session'
+alias tn='tmux new -s $(pwd | sed "s/.*\///g")'
+
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
 alias vf='vim $(fd . -t d | fzf --height=40% --layout=reverse)'
 alias vn='cd ~/.config/nvim/lua/user && vim'

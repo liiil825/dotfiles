@@ -30,13 +30,11 @@ if ! zgenom saved; then
 fi
 
 eval "$(zoxide init zsh)"
-
 [[ $(uname -n) == *"-opencloudos" ]] && return
 
 if [[ -s "$HOME/.local/share/marker/marker.sh" ]]; then
     source "$HOME/.local/share/marker/marker.sh"
 else
     git clone --depth 1 https://github.com/pindexis/marker.git $HOME/.config/.marker
-    cd $HOME/.config/.marker && ./install.py
-    cd -
+    $HOME/.config/.marker/install.py
 fi
