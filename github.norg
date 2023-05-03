@@ -19,4 +19,3 @@
    ./install.sh
    @end
    `No error, no warnning`, but it's *not working* on *hyprland*
-

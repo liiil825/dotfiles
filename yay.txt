@@ -1,2 +1,4 @@
 thunar # file manager
 hyperfine # 命令行测速工具
+hyprland-git # 
+swaybg # wallpaper
