@@ -1,2 +1,4 @@
-*/.bak
+**.bak
 config/alacritty/themes
+**.log
+**.lock
