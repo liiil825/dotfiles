@@ -17,6 +17,7 @@ alias 9='cd -9'
 
 alias gaa='git add --all'
 alias gcl='git clone '
+alias gcbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'
 alias gcls='git clone --depth 1 '
 alias ggl='git pull --no-edit'
 alias ggp='git push'
@@ -54,6 +55,8 @@ alias pi='pnpm i'
 alias pid='pnpm i --save-dev'
 alias pis='pnpm i --save'
 
+alias show_tucp_port="sudo ss -tulpn"
+
 alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
@@ -63,6 +66,4 @@ alias vn='cd ~/.config/nvim/lua/user && vim'
 alias vt='cd ~/.config/tmux && vim tmux.conf'
 alias vz='cd ~/.config/zsh && vim'
 
-alias cbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'
-
-alias show_tucp_port="sudo ss -tulpn"
+alias yays='yay --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | fzf --multi --ansi --preview "yay -Si {1}" | xargs -ro yay -S'
