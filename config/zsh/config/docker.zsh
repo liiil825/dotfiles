@@ -1,38 +1,39 @@
 #!/usr/bin/env zsh
 
-# Select a docker container to start and attach to
+function select_container() {
+    docker ps -a | sed 1d | awk '{print $NF,$1,$2,$3,$4,$5,$6}' | column -t | fzf -1 -q "$1" | awk '{print $1}'
+}
+
 function da() {
     local cid
-    cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
-
+    cid=$(select_container "$1")
     [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
 }
-# Select a docker container to show logs
+
 function dlf() {
     local cid
-    cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
-
+    cid=$(select_container "$1")
     [ -n "$cid" ] && docker logs -f -n 50 "$cid"
 }
-# Select a running docker container to stop
+
 function ds() {
     local cid
-    cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
-
+    cid=$(select_container "$1")
     [ -n "$cid" ] && docker stop "$cid"
 }
-# Select a docker container to remove
+
 function drm() {
     local cid
-    cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
-
+    cid=$(select_container "$1")
     [ -n "$cid" ] && docker rm "$cid"
 }
-# Same as above, but allows multi selection:
-function drm() {
-    docker ps -a | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $1 }' | xargs -r docker rm
+
+function drm_all() {
+    local cid
+    cid=$(select_container "$1")
+    [ -n "$cid" ] && docker rm $cid
 }
-# Select a docker image or images to remove
+
 function drmi() {
     docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
 }
