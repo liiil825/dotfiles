@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
 
 function select_container() {
-    docker ps -a | sed 1d | awk '{print $NF,$1,$2,$3,$4,$5,$6}' | column -t | fzf -1 -q "$1" | awk '{print $1}'
+    docker ps -a | sed 1d | awk '{print $1,$NF,$2,$3,$4,$5,$6}' | column -t | fzf -1 -q "$1" | awk '{print $1}'
 }
 
 function da() {
     local cid
     cid=$(select_container "$1")
-    [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
+    [ -n "$cid" ] && docker exit -it "$cid" /bin/sh
 }
 
 function dlf() {

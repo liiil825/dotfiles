@@ -17,7 +17,7 @@ export FZF_CTRL_R_OPTS="--border-label=' history ' \
 --prompt='  '"
 
 
-# # Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
+# Using highlight (http://www.andre-simon.de/doku/highlight/en/highlight.html)
 export FZF_CTRL_T_OPTS="
 --preview 'bat -n --color=always {}'
 --bind 'ctrl-/:change-preview-window(down|hidden|)'"
@@ -49,5 +49,5 @@ fzf-man-widget() {
 }
 
 # `Ctrl-H` keybinding to launch the widget (this widget works only on zsh, don't know how to do it on bash and fish (additionaly pressing`ctrl-backspace` will trigger the widget to be executed too because both share the same keycode)
-zle -N fzf-man-widget
+zle     -N    fzf-man-widget
 bindkey '^[h' fzf-man-widget

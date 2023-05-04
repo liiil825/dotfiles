@@ -10,5 +10,3 @@ for the_file ($ZSH_CUSTOM/alias/*.zsh); do
     source $the_file
 done
 source $ZSH_CUSTOM/aliases.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
