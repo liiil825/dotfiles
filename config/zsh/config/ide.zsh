@@ -17,6 +17,7 @@ alias nvim-astro="NVIM_APPNAME=nvim-astro nvim"
 alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
 alias nvim-chad="NVIM_APPNAME=nvim-nvchad nvim"
 alias nvim-lunar="NVIM_APPNAME=nvim-lunar nvim"
+alias nvim="OPENAI_API_KEY=${OPENAI_API_KEY} nvim"
 
 function nvims() {
     itemNames=("default" "LazyVim" "NvChad" "AstroNvim" "LunarNvim")
@@ -44,9 +45,9 @@ function nvims() {
 }
 
 function nvim_change() {
-    alias nvim="NVIM_APPNAME=nvim-$1 nvim"
+    alias nvim="NVIM_APPNAME=nvim-$1 OPENAI_API_KEY=${OPENAI_API_KEY} nvim"
 }
 
 function nvim_clean() {
-    unalias nvim
+    alias nvim="OPENAI_API_KEY=${OPENAI_API_KEY} nvim"
 }

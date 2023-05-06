@@ -12,7 +12,8 @@ show_proxy () {
 
 set_proxy () {
     [[ $1 ]] && export PROXYPORT=$1
-    if [[ $2 ]]; then
+    [[ $2 ]] && export PROXYHOST=$2
+    if [[ $3 ]]; then
         export http_proxy=http://$PROXYHOST:$PROXYPORT
         export https_proxy=https://$PROXYHOST:$PROXYPORT
     else

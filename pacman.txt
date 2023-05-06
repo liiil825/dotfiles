@@ -5,6 +5,12 @@ starship # shell prompt
 zoxide # z
 gping # Ping, but with a graph
 exa # More powerful than `ls`
+ripgrep # An extremely fast alternative to grep that respects your gitignore
+git
+neovim
+go
+docker
+docker-compose
 
 
 feh # To set wallpapers on WMs

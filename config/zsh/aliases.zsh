@@ -46,6 +46,9 @@ alias lrt='ls -1Fcrt'
 alias lsr='ls -lARFh' #Recursive list of files and directories
 alias lsn='ls -1'     #A column contains name of files and directories
 
+alias lzd='lazydocker'
+alias lzg='lazygit'
+
 alias pacs='pacman --color always -Sl | sed -e "s: :/:; /installed/d" | cut -f 1 -d " " | fzf --multi --ansi --preview "pacman -Si {1}" | xargs -ro sudo pacman -S'
 alias pars='paru --color always -Sl | sed -e "s: :/:; s/ unknown-version//; /installed/d" | fzf --multi --ansi --preview "paru -Si {1}" | xargs -ro paru -S'
 alias pacr="pacman --color always -Q | cut -f 1 -d ' ' | fzf --multi --ansi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
