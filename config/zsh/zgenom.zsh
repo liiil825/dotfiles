@@ -1,9 +1,11 @@
 #!/usr/bin/env zsh
 
 hash -d zplugs=$ZSH_CUSTOM/plugins
-mkdir -p ~zplugs
 
-[[ -d ~zplugs/zgenom ]] || git clone --depth 1 https://github.com/jandamm/zgenom ~zplugs/zgenom
+[[ -d ~zplugs/zgenom ]] || { 
+    mkdir -p ~zplugs/zgenom
+    git clone --depth 1 https://github.com/jandamm/zgenom ~zplugs/zgenom 
+}
 
 source ~zplugs/zgenom/zgenom.zsh
 

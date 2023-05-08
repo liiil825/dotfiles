@@ -3,7 +3,7 @@
 # .zprofile is sourced on login shells and before .zshrc. As a general rule, it should not change the
 # shell environment at all.
 
-[[ $(uname -n) != "archlinux" ]] && return
+[[ $(uname -r) != *arch* ]] && return
 
 # 启动 wayland 桌面前设置一些环境变量
 set_wayland_env() {

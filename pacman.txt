@@ -11,6 +11,7 @@ neovim
 go
 docker
 docker-compose
+emacs
 
 
 feh # To set wallpapers on WMs

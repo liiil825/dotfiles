@@ -40,7 +40,7 @@ key_bindings:
   - { key: RBracket, mods: Command, chars: "\x07\x29" } # go to the next session
   - { key: Backslash, mods: Command, chars: "\x07\\" } # split tmux window horizontally
   - { key: Minus, mods: Command, chars: "\x07-" } # split tmux window vertically
-  - { key: G, mods: Command, chars: "\x07g" } # open git manager 'jesseduffield/lazygit'
+  - { key: G, mods: Command|Shift, chars: "\x07g" } # open git manager 'jesseduffield/lazygit'
   - { key: F, mods: Command, chars: "\x07\x54" } # open t - tmux smart session manager
   - { key: S, mods: Command, chars: "\x07s" } # open interactive tmux session client
   - { key: P, mods: Command, chars: "\x07L" } # switch to the last tmux session
