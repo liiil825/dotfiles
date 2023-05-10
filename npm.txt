@@ -1,0 +1,4 @@
+corepack@0.17.2
+npm@9.6.4
+open@8.4.2
+pnpm@8.3.1

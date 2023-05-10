@@ -17,12 +17,12 @@ alias nvim-astro="NVIM_APPNAME=nvim-astro nvim"
 alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
 alias nvim-chad="NVIM_APPNAME=nvim-nvchad nvim"
 alias nvim-lunar="NVIM_APPNAME=nvim-lunar nvim"
-alias nvim="OPENAI_API_KEY=${OPENAI_API_KEY} nvim"
 
 function nvims() {
     itemNames=("default" "LazyVim" "NvChad" "AstroNvim" "LunarNvim")
     itemAlias=("default" "nvim-lazy" "nvim-nvchad" "nvim-astro" "nvim-lunar")
-    config=$(printf "%s\n" "${itemNames[@]}" | fzf --prompt=" Neovim Config  " --height=50% --layout=reverse --border --exit-0)
+    config=$(printf "%s\n" "${itemNames[@]}" | fzf --prompt=" Neovim Config  "\
+        --height=50% --layout=reverse --border --exit-0)
 
     if [[ -z $config ]]; then
         echo "Nothing selected"
@@ -49,5 +49,5 @@ function nvim_change() {
 }
 
 function nvim_clean() {
-    alias nvim="OPENAI_API_KEY=${OPENAI_API_KEY} nvim"
+    unalias nvim
 }

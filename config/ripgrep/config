@@ -8,6 +8,9 @@ style:*.{css,sass,less,stylus}
 pug:*.{pug,jade}
 
 --type-add
+vue:*.{vue,ts}
+
+--type-add
 tmpl:*.{html,hbs,pug}
 
 --type-add

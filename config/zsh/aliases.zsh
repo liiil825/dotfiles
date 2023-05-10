@@ -15,6 +15,8 @@ alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
 
+alias bws='set_bw_session'
+
 alias gaa='git add --all'
 alias gcl='git clone '
 alias gcbr='git branch --sort=-committerdate | fzf --header "Checkout Recent Branch" --preview "git diff {1} --color=always" --pointer="" | xargs git checkout'

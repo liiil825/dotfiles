@@ -1,0 +1,5 @@
+@bitwarden/cli 2023.4.0
+neovim 4.10.1
+nrm 1.2.5
+open 8.4.2
+pnpm 8.5.0
