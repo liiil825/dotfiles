@@ -37,3 +37,8 @@ function drm_all() {
 function drmi() {
     docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
 }
+
+alias lzdk="docker run --rm -it -v \
+/var/run/docker.sock:/var/run/docker.sock \
+-v /root/Github/lazydocker:/.config/jesseduffield/lazydocker \
+lazyteam/lazydocker"
