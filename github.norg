@@ -1,4 +1,11 @@
 * install from github
+** rtl8821cu 网卡驱动
+   @code bash
+   git clone https://github.com/morrownr/8821cu-20210916 ~/Github/rtl8821cu
+   cd rtl8821cu
+   sudo pacman -S --noconfirm linux-headers dkms bc iw
+   ./install-driver.sh
+   @end
 ** keyd
    @code bash
     git clone https://github.com/rvaiya/keyd

@@ -1,13 +1,8 @@
 # zsh-config
-
-我的终端配置，快速配置终端环境，使用了 `ohmyzsh` 进行对所有终端配置进行管理
-
 ### 包含的插件
 
 这些放在 `plugins` 和 `theme` 目录下
 
-- 状态栏 [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-- [z.lua](https://github.com/skywind3000/z.lua)
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting.git)
 
