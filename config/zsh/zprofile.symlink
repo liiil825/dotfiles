@@ -8,8 +8,6 @@
 # 启动 wayland 桌面前设置一些环境变量
 set_wayland_env() {
     cd ${HOME}
-
-    export LANG=en_US.UTF-8 # 设置语言环境
     # Changing the exports below is not recommended
     export XDG_CURRENT_DESKTOP=Hyprland
     export XDG_SESSION_TYPE=wayland
