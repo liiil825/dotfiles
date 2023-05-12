@@ -48,7 +48,8 @@ key_bindings:
  - { key: Z,         mods: Command,         chars: "\x02z"    } # toggle zoom state of the current tmux pane
  - { key: Tab,       mods: Command,         chars: "\x02n"    } # switch to next tmux window
  - { key: O,         mods: Command,         chars: "\x02p"    } # switch to previous tmux window
- - { key: Grave,     mods: Control,         chars: "\x02`"    } # swap pane
+ - { key: LBracket,  mods: Control,         chars: "\x02{"    } # swap pane -U
+ - { key: RBracket,  mods: Control,         chars: "\x02}"    } # swap pane -D
  - { key: Space,     mods: Control,         chars: "\x02 "    } # next layout
  - { key: D,         mods: Command,         chars: "\x02F"    } # prop tmux
  - { key: Comma,     mods: Command,         chars: "\x02,"    } # rename the current tmux window
