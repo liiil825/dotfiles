@@ -34,9 +34,11 @@ ln -sf ~/.config/zsh/.zshrc ~/.zshrc
 
 - 终端管理工具[tmux](https://github.com/tmux/tmux#installation)
 - 进程查看器管理工具 [htop](https://github.com/htop-dev/htop#build-instructions)
+- 进程查看器管理工具 [btm]
 - 终端电脑信息展示工具 [neofetch]()
 
 适合开发环境:
 
 - 快速查找文件的工具 [fzf](https://github.com/junegunn/fzf#installation)
 - 控制台文件管理预览工具 [ranger](https://github.com/ranger/ranger#installing)
+- ripgrep [ripgrep]

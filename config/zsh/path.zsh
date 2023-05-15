@@ -5,7 +5,8 @@ export PATH=$PATH:$HOME/.config/bin/
 export PATH=$PATH:$HOME/.local/bin/
 export PATH=$PATH:$HOME/.config/tmux/plugins/t-smart-tmux-session-manager/bin
 
-[[ $(uname -n) == *"-opencloudos" ]] && return
+local detail_os=$(detect-os -r)
+[[ $detail_os == "opencloudos" ]] && return
 
-[[ "$(uname)" == "Linux"  ]] && source $ZSH_CUSTOM/path-linux.zsh
-[[ "$(uname)" == "Darwin" ]] && source $ZSH_CUSTOM/path-macos.zsh
+[[ $detail_os == "linux"  ]] && source $ZSH_CUSTOM/path-linux.zsh
+[[ $detail_os == "macos" ]] && source $ZSH_CUSTOM/path-macos.zsh

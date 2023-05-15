@@ -76,4 +76,4 @@ key_bindings:
  - { key: Key0,      mods: Alt,             chars: "\x07s9"   } # ... 9
 
 import:
-  - ~/.config/alacritty/themes/themes/snazzy.yaml
+  - ~/.config/themes/snazzy.yaml

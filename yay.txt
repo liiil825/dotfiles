@@ -89,7 +89,6 @@ efivar                                #  Tools and libraries to work with EFI va
 egl-wayland                           #  EGLStream-based Wayland external platform
 eglexternalplatform                   #  EGL External Platform interface
 electron21                            #  Build cross platform desktop apps with web technologies
-emacs-lucid                           #  The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)
 enchant                               #  A wrapper library for generic spell checking
 erofs-utils                           #  Userspace utilities for linux-erofs file system
 exa                                   #  ls replacement
@@ -138,6 +137,7 @@ gdb                                   #  The GNU Debugger
 gdb-common                            #  The GNU Debugger
 gdbm                                  #  GNU database library
 gdk-pixbuf2                           #  An image loading library
+gdu                                   #  Fast disk usage analyzer
 geoclue                               #  Modular geoinformation service built on the D-Bus messaging system
 gettext                               #  GNU internationalization library
 gflags                                #  C++ Library for commandline flag processing
@@ -195,11 +195,13 @@ hicolor-icon-theme                    #  Freedesktop.org Hicolor icon theme
 hidapi                                #  Simple library for communicating with USB and Bluetooth HID devices
 highway                               #  A C++ library for SIMD (Single Instruction, Multiple Data)
 http-parser                           #  Parser for HTTP Request/Response written in C
+hunspell                              #  Spell checker and morphological analyzer library and program
 hwdata                                #  hardware identification databases
 hwloc                                 #  Portable Hardware Locality is a portable abstraction of hierarchical architectures
 hyperfine                             #  A command-line benchmarking tool
 hyprland-nvidia-git                   #  A dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks. (NVIDIA patch)
 hyprpaper                             #  a blazing fast wayland wallpaper utility with IPC controls
+hyprpicker-git                        #  A wlroots-compatible Wayland color picker that does not suck.
 iana-etc                              #  /etc/protocols and /etc/services provided by IANA
 icu                                   #  International Components for Unicode library
 imagemagick                           #  An image viewing/manipulation program
@@ -365,7 +367,6 @@ libnss_nis                            #  NSS NIS plugin for glibc
 libogg                                #  Ogg bitstream and framing library
 libomxil-bellagio                     #  An opensource implementation of the OpenMAX Integration Layer API
 libopenmpt                            #  A library to render tracker music to a PCM audio stream
-libotf                                #  OpenType Font library
 libp11-kit                            #  Loads and enumerates PKCS                                                                                                            # 11 modules (library)
 libpcap                               #  A system-independent interface for user-level packet capture
 libpciaccess                          #  X11 PCI access library
@@ -434,7 +435,6 @@ libwebp                               #  WebP library and conversion tools
 libwireplumber                        #  Session / policy manager implementation for PipeWire - client library
 libx11                                #  X11 client-side library
 libxau                                #  X11 authorisation library
-libxaw                                #  X11 Athena Widget library
 libxcb                                #  X11 client-side library
 libxcomposite                         #  X11 Composite extension library
 libxcrypt                             #  Modern library for one-way hashing of passwords
@@ -489,8 +489,6 @@ luajit                                #  Just-in-time compiler and drop-in repla
 lvm2                                  #  Logical Volume Manager 2 utilities
 lz4                                   #  Extremely fast compression algorithm
 lzo                                   #  Portable lossless data compression library
-m17n-db                               #  Multilingual text processing library (database)
-m17n-lib                              #  Multilingual text processing library (runtimes)
 m4                                    #  The GNU macro processor
 mailcap                               #  Helper application and MIME type associations for file types
 make                                  #  GNU make utility to maintain groups of programs
@@ -510,9 +508,11 @@ mobile-broadband-provider-info        #  APN configuration presets for mobile br
 mpfr                                  #  Multiple-precision floating-point library
 mpg123                                #  Console based real time MPEG Audio Player for Layer 1, 2 and 3
 mpv                                   #  a free, open source, and cross-platform media player
+mpvpaper                              #  video wallpaper program for wlroots based wayland compositors
 msgpack-c                             #  An efficient object serialization library
 mtdev                                 #  A stand-alone library which transforms all variants of kernel MT events to the slotted type B protocol
 mtools                                #  A collection of utilities to access MS-DOS disks
+mtr                                   #  Combines the functionality of traceroute and ping into one tool (CLI version)
 mujs                                  #  An embeddable Javascript interpreter in C
 ncurses                               #  System V Release 4.0 curses emulation library
 ndctl                                 #  Utility library for managing the libnvdimm (non-volatile memory device) sub-system in the Linux kernel
@@ -584,6 +584,7 @@ psmisc                                #  Miscellaneous procfs tools
 pulseaudio                            #  A featureful, general-purpose sound server
 pulseaudio-alsa                       #  ALSA Configuration for PulseAudio
 python                                #  Next generation of the python high-level scripting language
+python-argcomplete                    #  Easy, extensible command line tab completion of arguments for your Python script
 python-attrs                          #  Attributes without boilerplate.
 python-autocommand                    #  A library to create a command-line program from a function
 python-cairo                          #  Python bindings for the cairo graphics library
@@ -607,11 +608,14 @@ python-pydantic                       #  Data parsing and validation using Pytho
 python-pydbus                         #  Pythonic D-Bus library
 python-setuptools                     #  Easily download, build, install, upgrade, and uninstall Python packages
 python-tomli                          #  A lil' TOML parser
+python-tomlkit                        #  Style-preserving TOML library for Python
 python-tqdm                           #  Fast, Extensible Progress Meter
 python-trove-classifiers              #  Canonical source for classifiers on PyPI (pypi.org)
 python-typing_extensions              #  Backported and Experimental Type Hints for Python 3.7+
 python-validate-pyproject             #  Validation library and CLI tool for checking on 'pyproject.toml' files using JSON Schema
 python-wheel                          #  A built-package format for Python
+python-xmltodict                      #  Python module that makes working with XML feel like working with JSON
+python-yaml                           #  Python bindings for YAML, using fast libYAML library
 qt5-base                              #  A cross-platform application and UI framework
 qt5-declarative                       #  Classes for QML and JavaScript languages
 qt5-location                          #  Provides access to position, satellite and area monitoring classes
@@ -747,7 +751,9 @@ thin-provisioning-tools               #  Suite of tools for manipulating the met
 thunar                                #  Modern, fast and easy-to-use file manager for Xfce
 tmux                                  #  Terminal multiplexer
 tpm2-tss                              #  Implementation of the TCG Trusted Platform Module 2.0 Software Stack (TSS2)
+traceroute                            #  Tracks the route taken by packets over an IP network
 tracker3                              #  Desktop-neutral user information store, search tool and indexer
+translate-shell                       #  A command-line interface and interactive shell for Google Translate
 tree                                  #  A directory listing program displaying a depth indented list of files
 tree-sitter                           #  An incremental parsing system for programming tools
 tslib                                 #  Touchscreen Access Library
@@ -797,7 +803,6 @@ wqy-zenhei                            #  A Hei Ti Style (sans-serif) Chinese Out
 x264                                  #  Open Source H264/AVC video encoder
 x265                                  #  Open Source H265/HEVC video encoder
 xapp                                  #  Common library for X-Apps project
-xaw3d                                 #  Three-D Athena widgets
 xcb-imdkit                            #  Input method development support for xcb
 xcb-proto                             #  XML-XCB protocol descriptions
 xcb-util                              #  Utility libraries for XC Binding
@@ -833,6 +838,7 @@ xxd-standalone                        #  Hexdump utility from vim
 xz                                    #  Library and command line tools for XZ and LZMA compressed files
 yaml-cpp                              #  YAML parser and emitter in C++, written around the YAML 1.2 spec
 yay                                   #  Yet another yogurt. Pacman wrapper and AUR helper written in go.
+yq                                    #  Command-line YAML, XML, TOML processor - jq wrapper for YAML/XML/TOML documents
 zeromq                                #  Fast messaging system built on sockets. C and C++ bindings. aka 0MQ, ZMQ.
 zimg                                  #  Scaling, colorspace conversion, and dithering library
 zlib                                  #  Compression library implementing the deflate compression method found in gzip and PKZIP

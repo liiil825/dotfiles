@@ -10,11 +10,18 @@ show_path() {
 zle -N show_path
 
 smart-tmux-seesion() {
-  BUFFER="t"
-  zle accept-line
+    BUFFER="t"
+    zle accept-line
 }
 zle     -N    smart-tmux-seesion
 bindkey '^[f' smart-tmux-seesion
+
+quick-ls() {
+    BUFFER="la"
+    zle accept-line
+}
+zle     -N    quick-ls
+bindkey '^[l' quick-ls
 
 # bat
 export BAT_THEME='OneHalfDark'
