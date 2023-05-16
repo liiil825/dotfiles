@@ -2,6 +2,9 @@
 
 [[ "$(uname)" == "Darwin" ]] && return
 
+# doom emacs
+export PATH=$PATH:$HOME/.config/emacs-doom/bin
+
 # go environment
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn,direct

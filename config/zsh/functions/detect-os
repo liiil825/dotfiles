@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+platform='unknown'
+kernel_name=$(uname)
+detect_main_os() {
+  if [[ "$kernel_name" == 'Linux' ]]; then
+    platform='linux'
+  elif [[ "$kernel_name" == 'Darwin' ]]; then
+    platform='macos'
+  fi
+}
+
+detect_detail_os() {
+  node_name=$(uname -n)
+  release=$(uname -r)
+  if [[ $node_name == *'-opencloudos' ]]; then
+    platform='opencloud-linux'
+  elif [[ $release == *'arch'* ]]; then
+    platform='arch-linux'
+  elif [[ "$kernel_name" == 'Linux' ]]; then
+    platform='linux'
+  elif [[ "$kernel_name" == 'Darwin' ]]; then
+    platform='macos'
+  fi
+}
+
+if [ "$1" ]; then
+  case "$1" in
+  '-r') detect_detail_os ;;
+  esac
+else
+  detect_main_os
+fi
+
+echo $platform

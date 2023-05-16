@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-[[ $(uname -n) == *"-opencloudos" ]] && return
+[[ $SYSTEM_PLATFORM == "opencloud"* ]] && return
 
-export NVM_DIR=$HOME/.nvm
+export NVM_DIR=$HOME/.config/.nvm
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

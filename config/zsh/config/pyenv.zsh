@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-[[ $(uname -n) == *"-opencloudos" ]] && return
+[[ $SYSTEM_PLATFORM == "opencloud"* ]] && return
 
 # python pyenv
-export PYENV_ROOT=$HOME/.pyenv
+export PYENV_ROOT=$HOME/.config/.pyenv
 command -v pyenv >/dev/null || export PATH=$PATH:$PYENV_ROOT/bin
 zsh-defer eval "$(pyenv init -)"

@@ -1,4 +1,4 @@
-[[ $(uname -n) == *"-opencloudos" ]] && return
+[[ $SYSTEM_PLATFORM == "opencloud"* ]] && return
 
 export PROXYHOST=localhost
 export PROXYPORT=1086
