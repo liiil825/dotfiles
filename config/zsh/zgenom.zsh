@@ -2,9 +2,9 @@
 
 hash -d zplugs=$ZSH_CUSTOM/plugins
 
-[[ -d ~zplugs/zgenom ]] || { 
+[[ -d ~zplugs/zgenom ]] || {
     mkdir -p ~zplugs/zgenom
-    git clone --depth 1 https://github.com/jandamm/zgenom ~zplugs/zgenom 
+    git clone --depth 1 https://github.com/jandamm/zgenom ~zplugs/zgenom
 }
 
 source ~zplugs/zgenom/zgenom.zsh
@@ -25,6 +25,7 @@ if ! zgenom saved; then
     zgenom load zdharma-continuum/fast-syntax-highlighting
     zgenom load zsh-users/zsh-autosuggestions
     zgenom load romkatv/zsh-defer
+    zgenom load b4b4r07/emoji-cli
 
     zgenom clean
     zgenom save
