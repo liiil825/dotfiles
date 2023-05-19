@@ -1,15 +1,28 @@
 {
     "layer": "top", // Waybar at top layer
     "height": 30, // Waybar height (to be removed for auto height)
-    "padding-top": 6,
-    "padding-bottom": 6,
-    "padding-left": 10,
-    "padding-right": 10,
+    // "padding-top": 6,
+    // "padding-bottom": 6,
+    // "padding-left": 10,
+    // "padding-right": 10,
     "spacing": 2, // Gaps between modules (4px)
     // "modules-left": ["custom/launcher", "cpu", "memory", "wlr/workspaces"],
-    "modules-left": ["cpu", "memory" ,"wlr/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "network", "custom/power-menu"],
+    "modules-left": [
+      "wlr/workspaces"
+    ],
+    "modules-center": [
+      "idle_inhibitor",
+      "custom/time",
+      "custom/updates"
+    ],
+    "modules-right": [
+      "cpu",
+      "memory",
+      "tray",
+      "pulseaudio",
+      "network",
+      "clock"
+    ],
     "wlr/workspaces": {
       "format": "{}",
       "disable-scroll": true,
@@ -44,14 +57,17 @@
     "tray": {
         "spacing": 10
     },
-    "custom/clock": {
-      "format": "<span color='#ff5c57'> </span>{:%H:%M}",
-    },
     "clock": {
       // "format": "<span color='#ff5c57'> </span>{:%H:%M}",
-      "format": "{:%Y-%m-%d %H:%M}",
-      "format-alt": "<span color='#ff5c57'> </span>{:%Y-%m-%d}",
+      "format": "{:%Y-%m-%d}",
+      // "format-alt": "  {:%Y-%m-%d}",
       "tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt>{calendar}</tt>",
+    },
+    "custom/time": {
+      // "format": "<span color='#ff5c57'> </span>{:%H:%M}",
+      "exec": "~/.config/waybar/scripts/time.sh",
+      // "tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt>{calendar}</tt>",
+      "interval": 60
     },
     "cpu": {
       "interval": 10,
@@ -74,25 +90,25 @@
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "  {volume}%",
-        "format-bluetooth-muted": " ",
-        "format-muted": "婢",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+      "format": "{icon} {volume}%",
+      "format-bluetooth": "  {volume}%",
+      "format-bluetooth-muted": " ",
+      "format-muted": "婢",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol"
     },
 
     "bluetooth": {
-        "on-click": "~/.config/waybar/scripts/rofi-bluetooth &",
-        "format": " {status}",
+      "on-click": "~/.config/waybar/scripts/rofi-bluetooth &",
+      "format": " {status}",
     },
 
     /*
@@ -120,4 +136,21 @@
         "format": " <span color='#57c7ff'> </span>",
         "on-click": "rofi -show drun",
     },
+
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "󰛐",
+        "deactivated": "󰛑"
+      },
+        "tooltip": true
+    },
+    "custom/updates": {
+      "format": "{}",
+      "exec": "~/.config/waybar/scripts/update-sys",
+      "on-click": "~/.config/waybar/scripts/update-sys update",
+      "interval": 300,
+      "tooltip": true
+    }
+
 }
