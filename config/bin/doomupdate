@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+killall -9 emacs
+case "$1" in
+"-b")
+  doom build
+  ;;
+"-r")
+  doom sync
+  ;;
+*) ;;
+esac
+emacs --daemon=doom
