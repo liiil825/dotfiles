@@ -1,0 +1,112 @@
+[colemak-dh:layout]
+esc = overload(switch, capslock)
+capslock = overload(extend, esc)
+e = f
+r = p
+t = b
+y = j
+u = l
+i = u
+o = y
+p = ;
+s = r
+d = s
+f = t
+h = m
+j = n
+k = e
+l = i
+; = o
+z = x
+x = c
+c = d
+b = z
+n = k
+m = h
+
+[S]
+capslock = overload(extend-S, esc)
+meta = layer(M-S)
+
+[M]
+capslock = overload(extend-M, esc)
+shift = layer(M-S)
+
+[M-S]
+j = M-S-left
+k = M-S-down
+l = M-S-up
+; = M-S-right
+
+[extend:C]
+shift = layer(extend-S)
+meta = layer(extend-M)
+j = left
+k = down
+l = up
+; = right
+z = C-z
+x = C-x
+c = C-c
+v = C-v
+1 = f1
+2 = f2
+3 = f3
+4 = f4
+5 = f5
+6 = f6
+7 = f7
+8 = f8
+9 = f9
+
+[extend-S:C-S]
+z = C-S-z
+x = C-S-x
+c = C-S-c
+v = C-S-v
+
+[extend-M]
+j = M-left
+k = M-down
+l = M-up
+; = M-right
+
+[switch]
+q = layout(main)
+w = layout(colemak-dh)
+
+[chromium]
+
+control.[ = macro(C-S-tab)
+control.] = macro(C-tab)
+control.a = home
+control.e = end
+control.j = down
+control.k = up
+control.n = down
+control.p = up
+control.f = right
+control.b = left
+control.d = delete
+meta.a = macro(C-a)
+meta.[ = macro(C-S-tab)
+meta.] = macro(C-tab)
+
+[firefox]
+
+control.[ = macro(C-S-tab)
+control.] = macro(C-tab)
+control.a = home
+control.e = end
+control.n = down
+control.p = up
+control.j = down
+control.k = up
+control.f = right
+control.b = left
+control.d = delete
+meta.a = macro(C-a)
+meta.[ = macro(C-S-tab)
+meta.] = macro(C-tab)
+
+[kitty]
