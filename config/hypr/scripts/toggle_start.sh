@@ -14,6 +14,7 @@ if pgrep -x "$1" >/dev/null; then
   emacs | emacsclient)
     # save all changes and kill emacsclient safely
     echo "Emacs is running, killing it now."
+    sleep 0.2
     emacsclient -s doom -e "(progn (save-some-buffers t) (save-buffers-kill-terminal))"
     # emacsclient -s doom -e "(progn (save-some-buffers t) (save-buffers-kill-emacs))"
     # emacsclient -s doom -e "(progn (save-some-buffers t) (make-frame-invisible nil t))"

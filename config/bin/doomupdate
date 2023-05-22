@@ -4,10 +4,11 @@ killall -9 emacs
 case "$1" in
 "-b")
   doom build
+  doom sync
   ;;
 "-r")
   doom sync
   ;;
-*) ;;
+*) doom sync ;;
 esac
 emacs --daemon=doom

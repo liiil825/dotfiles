@@ -26,3 +26,37 @@
    ./install.sh
    @end
    `No error, no warnning`, but it's *not working* on *hyprland*
+
+** [minic](https://github.com/MycroftAI/mimic1)
+sudo pacman -S --needed install gcc make pkg-config automake libtool alsa-lib
+
+On a native build (not cross-compilation)
+
+    Clone the repository
+
+    $ git clone https://github.com/MycroftAI/mimic1.git
+
+    Navigate to mimic directory
+
+    $ cd mimic1
+
+    Build and install missing dependencies (pcre2)
+
+    $ ./dependencies.sh --prefix="/usr/local"
+
+    Generate mimic build scripts
+
+    $ ./autogen.sh
+
+    Configure.
+
+    $ ./configure --prefix="/usr/local"
+
+    Build
+
+    $ make
+
+    Check
+
+    $ make check
+
