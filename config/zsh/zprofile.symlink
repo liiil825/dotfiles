@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 # .zprofile is sourced on login shells and before .zshrc. As a general rule, it should not change the
 # shell environment at all.
@@ -6,10 +6,10 @@
 [[ $(uname -r) != *arch* ]] && return
 
 # 命令行输入这个命令启动hyprland,可以自定义
-start_hyprland () {
-    exec Hyprland
+start_hyprland() {
+  exec Hyprland
 }
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 && ! $XDG_CURRENT_DESKTOP ]]; then
-    start_hyprland
+  start_hyprland
 fi

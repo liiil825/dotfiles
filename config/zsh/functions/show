@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+show_tucp_port() {
+  sudo ss -tulpn
+}
+show_path() {
+  echo $PATH | tr ':' '\n'
+}
+show_fonts() {
+  fc-list | awk -F: '{print $2}' | sort | uniq
+}
+
+case "$1" in
+"--port" | port)
+  show_tucp_port
+  ;;
+"-f" | "fonts")
+  show_fonts
+  ;;
+"--proxy" | proxy)
+  show_proxy
+  ;;
+"--path" | path)
+  show_path
+  ;;
+*)
+  show_path
+  ;;
+esac

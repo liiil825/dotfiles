@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+nerd_test() {
+  echo "Nerd font"
+  echo "\033[1mBold\033[22m"
+  echo "\033[3mItalic\033[23m"
+  echo "\033[3;1mBold Italic\033[0m"
+  echo "\033[4mUnderline\033[24m"
+  echo "== === !== >= <= => </ /> <>"
+  echo "契          勒 鈴 "
+}
+
+emoji_font() {
+  echo "emoji font"
+  echo "😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 😘 🥰 😗 😙 😚 ☺️ 🙂 🤗 🤩 🤔 🤨 😐 😑 😶 🙄 😏 😣 😥 😮 🤐"
+  echo "😯 😪 😫 😴 😌 😛 😜 😝 🤤 😒 😓 😔 😕 🙃 🤑 😲 ☹️ 🙁 😖 😞 😟 😤 😢 😭 😦 😧 😨 😩 🤯 😬 😰 😱 🥵"
+  echo "🥶 😳 🤪 😵 😡 😠 🤬 😷 🤒 🤕 🤢 🤮 🤧 😇 🤠 🤡 🥳 🥴 🥺 🤥 🤫 🤭 🧐 🤓 😈 👿 👹 👺 💀 👻 👽 🤖 💩"
+  echo "😺 😸 😹 😻 😼 😽 🙀 😿 😾"
+}
+
+case "$1" in
+"-n")
+  nerd_test
+  ;;
+"-e")
+  emoji_font
+  ;;
+"-a")
+  nerd_test
+  emoji_font
+  ;;
+*)
+  nerd_test
+  ;;
+esac

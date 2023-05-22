@@ -62,8 +62,6 @@ alias pi='pnpm i'
 alias pid='pnpm i --save-dev'
 alias pis='pnpm i --save'
 
-alias show_tucp_port="sudo ss -tulpn"
-
 alias ta='tmux attach-session'
 alias tn='tmux new -s $(pwd | sed "s/.*\///g")'
 
