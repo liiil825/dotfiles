@@ -13,3 +13,6 @@ refresh_pacman_txt() {
         | column -t -o ' # ' -s'#' \
         | sed 's/ *# *$//' > yay.txt
 }
+
+alias calibre="QT_QPA_PLATFORM=xcb calibre"
+alias ebook-viewer="QT_QPA_PLATFORM=xcb ebook-viewer"
