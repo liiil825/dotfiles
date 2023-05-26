@@ -1,0 +1,1 @@
+alacritty --title update-sys -e sh -i -c 'cd; tmux new -A -s update-sys "yay -Syu"'

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # check if the script is called with an argument
 if [ -z "$1" ]; then
@@ -12,25 +12,28 @@ LOCKFILE="/tmp/$1.lock"
 if [ -e $LOCKFILE ]; then
   # if it exists, delete it and kill the process
   echo "Lockfile exists, deleting it now."
-  rm $LOCKFILE
+  rm "$LOCKFILE"
   case "$1" in
   emacs | emacsclient)
     echo "Emacs is running, killing it now."
-    sleep 0.1
-    emacsclient -s doom -e "(progn (save-some-buffers t) (delete-frame))"
+    # emacsclient -s doom -e "(progn (save-buffers-kill-terminal))"
+    emacsclient -s doom -e "(save-buffers-kill-terminal)"
     ;;
   *)
     echo "$1 is running, killing it now."
     pkill -x "$1"
     ;;
   esac
-else
-  # if it doesn't exist, create it and start the process
-  echo "Creating lockfile."
-  touch $LOCKFILE
+  exit 0
+fi
+
+# Attempt to acquire an exclusive lock. Launch the command, capture the PID, and store it in the PIDFILE
+(
+  flock -n 200
   case "$1" in
   alacritty | kitty)
     echo "$1 is not running, starting it now."
+    # $1 -e sh -c "
     $1 -e zsh -ic "
        if tmux list-sessions &> /dev/null; then
          tmux attach-session;
@@ -41,7 +44,6 @@ else
     ;;
   emacs | emacsclient)
     echo "$1 is not running, starting it now."
-    sleep 0.1
     emacsclient -c -s doom ~/org/todo.org
     ;;
   *)
@@ -49,4 +51,5 @@ else
     $1
     ;;
   esac
-fi
+
+) 200>"${LOCKFILE}"

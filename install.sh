@@ -18,7 +18,7 @@ GITHUB_REPOS=$HOME/Github
 
 echo -e "$CNT - You are about to execute a script that would attempt to setup zsh env."
 
-read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set zsh link to .config (\e[1;36mzsh .zprofile .zshenv .zshrc\e[0m]) (y,n) ' INST
+read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set zsh symlink to .config (\e[1;36mzsh .zprofile .zshenv .zshrc\e[0m) (y,n) ' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
   mkdir -p $MYCONFIG
   ln -sf "$(pwd)/config/zsh" $HOME/.config
@@ -28,7 +28,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 fi
 
 ### set symlink all of the above pacakges ####
-read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set soft link to .config (\e[1;36mtmux bin alacritty kitty lazygit ripgrep keyd waybar\e[0m]) (y,n)' INST
+read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set there software symlink to .config (\e[1;36mtmux bin alacritty kitty lazygit ripgrep keyd waybar\e[0m) (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
   for SOFTWR in tmux bin alacritty kitty lazygit ripgrep keyd waybar; do
     ln -sf "$(pwd)/config/$SOFTWR" $HOME/.config
@@ -36,7 +36,13 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 fi
 
 ## install onagre
-read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set onagre link to .config (y,n)' INST
+read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set \e[1;36mjoshuto\e[0m symlink link to .config (y,n)' INST
+if [[ $INST == "Y" || $INST == "y" ]]; then
+  ln -sf "$(pwd)/config/joshuto" $HOME/.config
+fi
+
+## install onagre
+read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set  \e[1;36monagre\e[0m symlink to .config (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
   ln -sf "$(pwd)/config/onagre" $HOME/.config
 fi

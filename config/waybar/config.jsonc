@@ -138,7 +138,7 @@
     },
     "custom/updates": {
       "format": "{}",
-      "exec": "~/.config/waybar/scripts/update-sys",
+      "exec": "~/.config/waybar/scripts/update-sys official",
       "on-click": "~/.config/waybar/scripts/update-sys update",
       "interval": 300,
       "tooltip": true

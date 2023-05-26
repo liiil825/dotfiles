@@ -1,4 +1,0 @@
-#!/bin/bash
-# tmux new-session -d -s btm-session 'btm' # start new detached tmux session, run htop
-# tmux send 'btm' ENTER                    # send 2nd command 'htop -t' to 2nd pane. I believe there's a `--target` option to target specific pane.
-yay -Suy

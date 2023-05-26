@@ -3,6 +3,21 @@
 background=$(find $HOME/Pictures/Wallpaper -type f | shuf -n 1)
 swaybg --image $background -m fill &
 
+function close_apps {
+LOCKFILE="/tmp/alacritty.lock"
+if [ -e $LOCKFILE ]; then
+  echo "close alacritty"
+  rm $LOCKFILE
+  pkill -x alacritty
+fi
+LOCKFILE="/tmp/emacsclient.lock"
+if [ -e $LOCKFILE ]; then
+  echo "close emacsclient"
+  rm $LOCKFILE
+  emacsclient -s doom -e "(progn (save-buffers-kill-terminal))"
+fi
+}
+
 function handle {
   if [[ ${1:0:9} == "workspace" ]]; then
     echo $line
@@ -19,6 +34,7 @@ function handle {
     swaybg --image $newbackground -m fill &
     sleep .3
     kill $swpid
+    close_apps
   fi
 }
 

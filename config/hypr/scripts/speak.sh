@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 PIDFILE=/tmp/mimic.lock
 
@@ -18,8 +18,10 @@ fi
 (
   flock -n 200
 
-  sleep 0.2
-  mimic -t "$(wl-paste)" -voice slt &
-
+  # mimic -t "$(wl-paste)" -voice slt &
+  curl -X POST -H 'Content-Type: text/plain' --output - \
+    --data "$(wl-paste)" \
+    'http://localhost:5002/api/tts' |
+    aplay
   echo $! >"${PIDFILE}"
 ) 200>"${PIDFILE}"
