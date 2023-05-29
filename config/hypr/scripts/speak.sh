@@ -22,6 +22,6 @@ fi
   curl -X POST -H 'Content-Type: text/plain' --output - \
     --data "$(wl-paste)" \
     'http://localhost:5002/api/tts' |
-    aplay
+    aplay &
   echo $! >"${PIDFILE}"
 ) 200>"${PIDFILE}"

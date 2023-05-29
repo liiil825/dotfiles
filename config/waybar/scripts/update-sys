@@ -14,7 +14,6 @@ show() {
   if [[ "$COUNT" = "0" ]]; then
     echo ""
   else
-    # This Update symbol is RTL. So &#x202d; is left-to-right override.
     echo " $COUNT"
   fi
   exit 0
@@ -23,7 +22,7 @@ show() {
 # Case/switch for each service updates
 case $1 in
 update)
-  footclient --title update-sys -e sh -c 'cd; tmux new -A -s update-sys "sudo pacman -Syu"'
+  alacritty --title update-sys -e sh -c 'cd; tmux new -A -s update-sys "sudo pacman -Syu"'
   ;;
 aur)
   COUNT=$AUR

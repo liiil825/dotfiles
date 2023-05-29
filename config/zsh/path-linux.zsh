@@ -17,3 +17,6 @@ export PATH=$PATH:$HOME/.local/lib/python3.10/site-packages
 # rust
 export PATH=$PATH:$HOME/.cargo/bin/
 export CARGO_NET_GIT_FETCH_WITH_CLI=true
+
+# c++ 库管理
+export VCPKG_ROOT=$HOME/vcpkg

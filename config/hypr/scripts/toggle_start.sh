@@ -16,7 +16,7 @@ if [ -e $LOCKFILE ]; then
   case "$1" in
   emacs | emacsclient)
     echo "Emacs is running, killing it now."
-    # emacsclient -s doom -e "(progn (save-buffers-kill-terminal))"
+    # emacsclient -s doom -e "(progn (save-some-buffers) (delete-frame))"
     emacsclient -s doom -e "(save-buffers-kill-terminal)"
     ;;
   *)
@@ -33,14 +33,15 @@ fi
   case "$1" in
   alacritty | kitty)
     echo "$1 is not running, starting it now."
-    # $1 -e sh -c "
-    $1 -e zsh -ic "
-       if tmux list-sessions &> /dev/null; then
-         tmux attach-session;
-       else
-         cd ~/Repos/dotfiles;
-         tmux new -s dotfiles;
-       fi"
+    # $1 -e zsh -ic "
+    if tmux list-sessions &>/dev/null; then
+      $1 -e sh -c "tmux attach-session;"
+    else
+      $1 -e zsh -ic "
+        cd ~/Repos/dotfiles;
+        tmux new -s dotfiles;
+      "
+    fi
     ;;
   emacs | emacsclient)
     echo "$1 is not running, starting it now."
@@ -51,5 +52,4 @@ fi
     $1
     ;;
   esac
-
 ) 200>"${LOCKFILE}"
