@@ -36,6 +36,12 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 fi
 
 ## install onagre
+read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set \e[1;36mdoom\e[0m symlink link to .config (y,n)' INST
+if [[ $INST == "Y" || $INST == "y" ]]; then
+  ln -sf "$(pwd)/config/doom" $HOME/.config
+fi
+
+## install onagre
 read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set \e[1;36mjoshuto\e[0m symlink link to .config (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
   ln -sf "$(pwd)/config/joshuto" $HOME/.config

@@ -1,7 +1,4 @@
-[submodule "config/zsh/themes/powerlevel10k"]
-  path = config/zsh/themes/powerlevel10k
-  url = https://github.com/romkatv/powerlevel10k.git
-  shallow = true
-[submodule "librocksdb-sys/rocksdb"]
-	path = librocksdb-sys/rocksdb
-	url = https://github.com/facebook/rocksdb.git
+; [submodule "config/zsh/themes/powerlevel10k"]
+;   path = config/zsh/themes/powerlevel10k
+;   url = https://github.com/romkatv/powerlevel10k.git
+;   shallow = true
