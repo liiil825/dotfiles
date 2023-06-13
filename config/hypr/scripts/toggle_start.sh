@@ -23,6 +23,9 @@ if [ -e $LOCKFILE ]; then
     # read -r pid <"${LOCKFILE}"
     kill -SIGUSR2 wf-recorder
     ;;
+  fzf-nova | jiantie-list)
+    pkill -x kitty
+    ;;
   *)
     echo "$1 is running, killing it now."
     pkill -x "$1"
@@ -44,8 +47,14 @@ fi
       $1 -e zsh -ic "
         cd ~/Repos/dotfiles;
         tmux new -s dotfiles;
-      "
+        "
     fi
+    ;;
+  fzf-nova)
+    kitty -e sh -ic $HOME/Repos/dotfiles/config/hypr/scripts/fzf-nova/fzf-nova
+    ;;
+  jiantie-list)
+    kitty -e sh -ic $HOME/Repos/dotfiles/config/hypr/scripts/fzf-nova/_jiantie-list
     ;;
   emacs | emacsclient)
     echo "$1 is not running, starting it now."

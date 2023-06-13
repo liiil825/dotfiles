@@ -16,27 +16,46 @@ if [ -f "${PIDFILE}" ]; then
   fi
 fi
 
+copy_translate() {
+  [[ ! -z $(wl-paste) ]] && wl-copy "$(trans -b :zh-Cn "$(wl-paste)")"
+}
+
+replace_data() {
+  data=$(wl-paste)
+  [[ -z $data ]] && data="The system clipobard is empty."
+  data=$(echo "$data" | sd -s '#' '')
+  data=$(echo "$data" | sd -s '/' '')
+  data=$(echo "$data" | sd -s '\-\-' '')
+  data=$(echo "$data" | sd -s '...' ' et cetera')
+  data=$(echo "$data" | sd '(\d+)\.' '$1')
+  data=$(echo "$data" | sd '([^.])\n' '$1.')
+  data=$(echo "$data" | sd '\n' '.')
+  data=$(echo "$data" | sd -s '..' '.')
+  echo $data
+}
+
 # Attempt to acquire an exclusive lock. Launch the command, capture the PID, and store it in the PIDFILE
 (
   flock -n 200
 
-  data=$(wl-paste | sed -e 's#[^.]$#.#' -e 's#\###g;s#//##g; s#--##g;' | sed -e ':a;N;$!ba;s#\n# #g')
-
+  data=$(replace_data)
   # Split the data text according to period (.)
+  echo -e "\e[1;36mdata:\e[0m \"$data\""
   IFS='.' read -ra sentences <<<"$data"
   touch $RUNFILE
-  echo 'run speak'
   for sentence in "${sentences[@]}"; do
     if [ ! -e "${RUNFILE}" ]; then
       break
     fi
-    echo "$sentence."
-    curl -X POST -H 'Content-Type: text/plain' --output - \
-      --data "$sentence." \
-      'http://localhost:5002/api/tts' |
-      aplay &
-    echo $! >"${PIDFILE}"
-    wait $!
+    if echo "$sentence" | grep -Eq "[[:alnum:]]"; then
+      echo -e "\e[1;36mText:\e[0m \"$sentence\""
+      curl -X POST -H 'Content-Type: text/plain' --output - \
+        --data "$sentence." \
+        'http://localhost:5002/api/tts' |
+        aplay &
+      echo $! >"${PIDFILE}"
+      # trans :zh-Cn -b "$sentence" | rofi -dmenu -p "Translation"
+      wait $!
+    fi
   done
-
 ) 200>"${PIDFILE}"

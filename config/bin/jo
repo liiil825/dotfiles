@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -n "$DISPLAY" ] && command -v ueberzug > /dev/null; then
+if [ -n "$DISPLAY" ] && command -v ueberzug >/dev/null; then
   export joshuto_wrap_id="$$"
   export joshuto_wrap_tmp="$(mktemp -d -t joshuto-wrap-$joshuto_wrap_id-XXXXXX)"
   export joshuto_wrap_ueber_fifo="$joshuto_wrap_tmp/fifo"
@@ -23,9 +23,9 @@ if [ -n "$DISPLAY" ] && command -v ueberzug > /dev/null; then
 
   function show_image {
     >"${joshuto_wrap_ueber_fifo}" declare -A -p cmd=( \
-        [action]=add [identifier]="${joshuto_wrap_ueber_identifier}" \
-        [x]="${2}" [y]="${3}" \
-        [width]="${4}" [height]="${5}" \
+      [action]=add [identifier]="${joshuto_wrap_ueber_identifier}" \
+      [x]="${2}" [y]="${3}" \
+      [width]="${4}" [height]="${5}" \
       [path]="${1}")
   }
 
