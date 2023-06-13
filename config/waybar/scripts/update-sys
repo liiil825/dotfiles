@@ -7,7 +7,7 @@ fi
 
 # Calculate updates for each service
 AUR=$(yay -Qua | wc -l)
-OFFICIAL=$(checkupdates | wc -l)
+OFFICIAL=$(pacman -Qu | wc -l)
 COUNT=$((OFFICIAL + AUR))
 
 show() {
@@ -22,7 +22,10 @@ show() {
 # Case/switch for each service updates
 case $1 in
 update)
-  alacritty --title update-sys -e sh -c 'cd; tmux new -A -s update-sys "sudo pacman -Syu"'
+  # touch "/tmp/alacritty.lock"
+  footclient --title update-sys -e sh -c 'cd; tmux new -A -s update-sys "sudo pacman -Syu"' &
+  wait $!
+  killall -SIGUSR2 waybar
   ;;
 aur)
   COUNT=$AUR

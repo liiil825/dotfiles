@@ -1,6 +1,9 @@
 ## Type additions
 ## Add new types to search by
 --type-add
+rs:*.rs
+
+--type-add
 dts:*.d.ts
 
 --type-add

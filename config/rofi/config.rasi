@@ -9,14 +9,16 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window";
+	modi:                       "drun,run,filebrowser,window,emoji";
     show-icons:                 false;
     display-drun:               " ";
     display-run:                " ";
     display-filebrowser:        " ";
     display-window:             " ";
-	drun-display-format:        "{name}";
+	drun-display-format:        "{icon} {name}";
 	window-format:              "{w} · {c} · {t}";
+	show-icons: true;
+	icon-theme: "Papirus";
 }
 
 /*****----- Global Properties -----*****/

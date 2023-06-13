@@ -65,6 +65,7 @@ window#waybar.hidden {
 #idle_inhibitor,
 #mpd,
 #bluetooth,
+#custom-weather,
 #custom-hyprPicker,
 #custom-power-menu {
   padding: 0 10px;
