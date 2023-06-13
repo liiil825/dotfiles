@@ -33,5 +33,9 @@ elif [[ $SYSTEM_PLATFORM == "macos" ]]; then
 elif [[ $TERM != *"-256color" ]]; then
     export TERM="xterm-256color"
 fi
-
+if [[ $COLORTERM != *"-256color" ]]; then
+    export COLORTERM="screen-256color"
+fi
 typeset -aU path
+
+export NNN_PLUG='o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview'

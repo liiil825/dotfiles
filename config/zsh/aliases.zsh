@@ -69,7 +69,7 @@ alias v='nvim'
 alias vi='nvim'
 alias vim='nvim'
 
-alias vf='vim $(fd . -t d | fzf --height=40% --layout=reverse)'
+alias vf='vim $(fd . | fzf --height=40% --layout=reverse)'
 alias vn='cd ~/.config/nvim/lua/user && vim'
 alias vt='cd ~/.config/tmux && vim tmux.conf'
 alias vz='cd ~/.config/zsh && vim'
