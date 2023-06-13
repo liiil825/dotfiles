@@ -8,7 +8,7 @@ select_img() {
 random_img() {
   # Get the list of file addresses in the swapbg directory
   existing_imgs=()
-  for file in "$BG_DIR/*.lock"; do
+  for file in "$SWAYBG_DIR/*.lock"; do
     existing_imgs+=("$(cat $file)")
   done
 
@@ -43,24 +43,30 @@ close_apps() {
 handle() {
   if [[ ${1:0:9} == "workspace" ]]; then
     workspace=$(echo $1 | awk -F\>\> '{print $2}')
-    if [[ -e "$BG_DIR/$workspace.lock" ]]; then
-      read -r background <"$BG_DIR/$workspace.lock"
+    newbackground=""
+    if [[ -e "$SWAYBG_DIR/$workspace.lock" ]]; then
+      read -r newbackground <"$SWAYBG_DIR/$workspace.lock"
     else
-      background=$(random_img)
-      echo $background >"${BG_DIR}/${workspace}.lock"
+      newbackground=$(random_img)
+      echo $newbackground >"${SWAYBG_DIR}/${workspace}.lock"
     fi
-    swww img $background --transition-fps 60 --transition-type wipe --transition-bezier ".88,.06,.29,.94" --transition-duration .8 &
+    read -r pid <"${PIDFILE}"
+    kill $pid
+    swaybg --image $newbackground -m fill &
+    echo $! >"${PIDFILE}"
     close_apps
   fi
 }
 
-BG_DIR="/tmp/swww"
-rm -rf $BG_DIR
-mkdir -p $BG_DIR
+SWAYBG_DIR="/tmp/swaybg"
+rm -rf $SWAYBG_DIR
+mkdir -p $SWAYBG_DIR
+PIDFILE="/tmp/swaybg.lock"
 black_img="$HOME/Pictures/black.png"
 background=$(select_img)
-swww init
+swaybg --image $black_img -m fill &
 sleep 0.1
-swww img $background --transition-fps 60 --transition-type wipe --transition-bezier ".88,.06,.29,.94" --transition-duration .8 &
-echo $background >"${BG_DIR}/1.lock"
+swaybg --image $background -m fill &
+echo $! >"${PIDFILE}"
+echo $background >"${SWAYBG_DIR}/1.lock"
 socat - UNIX-CONNECT:/tmp/hypr/${HYPRLAND_INSTANCE_SIGNATURE}/.socket2.sock | while read line; do handle $line; done

@@ -19,6 +19,10 @@ if [ -e $LOCKFILE ]; then
     # emacsclient -s doom -e "(progn (save-some-buffers) (delete-frame))"
     emacsclient -s doom -e "(save-buffers-kill-terminal)"
     ;;
+  wf-recorder)
+    # read -r pid <"${LOCKFILE}"
+    kill -SIGUSR2 wf-recorder
+    ;;
   *)
     echo "$1 is running, killing it now."
     pkill -x "$1"
@@ -46,6 +50,10 @@ fi
   emacs | emacsclient)
     echo "$1 is not running, starting it now."
     emacsclient -c -s doom ~/org/todo.org
+    ;;
+  wf-recorder)
+    wf-recorder -g "$(slurp)" -f "$HOME/Downloads/recorder.mp4" &
+    echo $! >"${LOCKFILE}"
     ;;
   *)
     echo "$1 is not running, starting it now."
