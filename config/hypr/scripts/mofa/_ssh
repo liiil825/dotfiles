@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
+COMMANDS=(
+  "hk"
+  "openwrt"
+)
+selected_command=$(printf "%s\n" "${COMMANDS[@]}" | fzf --prompt="command  ")
+[ -z $selected_command ] && quit
+
+hide
+case "$selected_command" in
+hk)
+  kitty -e ssh hk-tccloud.com
+  ;;
+openwrt)
+  kitty -e ssh openwrt-arch.local
+  ;;
+  *) echo default
+  ;;
+esac
+quit

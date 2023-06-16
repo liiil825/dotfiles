@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+. $CURRENT_DIR/utils-jiantie.sh
+
+alias fzf-selector="fzf --delimiter \" \" --with-nth='2..' --preview \"jiantie decode {} -m\" --preview-window=right,65%"
+selected=$(jiantie list --format "id,type,data,tags" --tags snippet | fzf-selector)
+
+[[ -z $selected ]] && quit
+selected_id=$(echo "$selected" | cut -f 1 -d ' ')
+selected_type=$(echo "$selected" | cut -f 2 -d ' ')
+selected_type=$(parse_type $selected_type)
+jiantie get "$selected_id" --data-type "$selected_type" --format "data" | wl-copy
+quit

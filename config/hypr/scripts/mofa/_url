@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
+alias fzf-selector="fzf --delimiter \" \" --with-nth='2..' --preview \"jiantie decode {} -m\" --preview-window=up,65%"
+selected=$(jiantie list --format "id,type,data,tags" --tags URL | fzf-selector)
+
+[[ -z $selected ]] && quit
+url=$(echo "$selected" | cut -f 3 -d ' ')
+xdg-open $url
+quit

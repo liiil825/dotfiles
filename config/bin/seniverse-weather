@@ -1,0 +1,98 @@
+#!/usr/bin/env sh
+
+fetch() {
+  PUBLIC_KEY="PA0IIgu3utmogBria"
+  LOCATION=$1
+  [ -z $LOCATION ] && LOCATION="wuhan"
+  TS=$(date +%s)
+  PARMS="location=$LOCATION&public_key=$PUBLIC_KEY&ts=$TS&ttl=300"
+  sign=$(echo -n "$PARMS" | openssl dgst -sha1 -hmac "$SENIVERSE_PRIVATE_KEY" -binary | openssl base64)
+  API_URL="https://api.seniverse.com/v3/weather/now.json"
+
+  data=$(curl "$API_URL?$PARMS&sig=$sign")
+  # data='{"results":[{"location":{"id":"WT3Q0FW9ZJ3Q","name":"武汉","country":"CN","path":"武汉,武汉,湖北,中国","timezone":"Asia/Shanghai","timezone_offset":"+08:00"},"now":{"text":"多云","code":"4","temperature":"27"},"last_update":"2023-06-08T19:50:15+08:00"}]}'
+  echo "$data"
+}
+
+weather_code="null"
+while [[ true ]]; do
+  if [[ $weather_code == "null" ]]; then
+    data=$(fetch $1)
+    weather_code=$(echo "$data" | jq -r '.results[0].now.code')
+  else
+    break
+  fi
+  sleep .1
+done
+
+temperature=$(echo "$data" | jq -r '.results[0].now.temperature')
+weather_icon=""
+case "$weather_code" in
+0 | 1 | 2 | 3)
+  weather_icon="🌈"
+  ;;
+4)
+  weather_icon="🌤"
+  ;;
+5 | 6)
+  weather_icon="🌤"
+  ;;
+7 | 8)
+  weather_icon="☁️"
+  ;;
+9)
+  weather_icon="☁️"
+  ;;
+10)
+  # 10 阵雨 Shower
+  weather_icon="⛈️"
+  ;;
+11)
+  # 11 雷阵雨 Thundershower
+  weather_icon="⛈️"
+  ;;
+12)
+  # 12 雷阵雨伴有冰雹 Thundershower with Hail
+  weather_icon="🌨️"
+  ;;
+13 | 14 | 15 | 16 | 17 | 18)
+  # 13 小雨 Light Rain
+  # 14 中雨 Moderate Rain
+  # 15 大雨 Heavy Rain
+  # 16 暴雨 Storm
+  # 17 大暴雨 Heavy Storm
+  # 18 特大暴雨 Severe Storm
+  weather_icon="🌧"
+  ;;
+19 | 20)
+  # 19 冻雨 Ice Rain
+  # 20 雨夹雪 Sleet
+  weather_icon="🌧️"
+  ;;
+*)
+  # 21 阵雪 Snow Flurry
+  # 22 小雪 Light Snow
+  # 23 中雪 Moderate Snow
+  # 24 大雪 Heavy Snow
+  # 25 暴雪 Snowstorm
+  # 26 浮尘 Dust
+  # 27 扬沙 Sand
+  # 28 沙尘暴 Duststorm
+  # 29 强沙尘暴 Sandstorm
+  # 30 雾 Foggy
+  # 31 霾 Haze
+  # 32 风 Windy
+  # 33 大风 Blustery
+  # 34 飓风 Hurricane
+  # 35 热带风暴 Tropical Storm
+  # 36 龙卷风 Tornado
+  # 37 冷 Cold
+  # 38 热 Hot
+  weather_icon="❓"
+  ;;
+esac
+
+TEXT="$weather_icon  $temperature"
+DATA=$(python3 ~/.config/waybar/scripts/weather.py)
+tooltip=$(echo $DATA | jq -c ".tooltip")
+echo "{\"text\": \"$TEXT\", \"tooltip\": $tooltip}"

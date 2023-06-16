@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+file="_$1"
+cp ~/.config/template/mofa $file
+chmod 755 $file

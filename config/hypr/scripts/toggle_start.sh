@@ -23,12 +23,12 @@ if [ -e $LOCKFILE ]; then
     # read -r pid <"${LOCKFILE}"
     kill -SIGUSR2 wf-recorder
     ;;
-  fzf-nova | jiantie-list)
-    pkill -x kitty
+  mofa)
+    pkill -x alacritty
     ;;
   *)
     echo "$1 is running, killing it now."
-    pkill -x "$1"
+    pkill -x $1
     ;;
   esac
   exit 0
@@ -50,11 +50,14 @@ fi
         "
     fi
     ;;
-  fzf-nova)
-    kitty -e sh -ic $HOME/Repos/dotfiles/config/hypr/scripts/fzf-nova/fzf-nova
-    ;;
-  jiantie-list)
-    kitty -e sh -ic $HOME/Repos/dotfiles/config/hypr/scripts/fzf-nova/_jiantie-list
+  mofa)
+    file=$2
+    if [[ -z $file ]]; then
+      file="fzf-root"
+    else
+      file="_$file"
+    fi
+    alacritty -e sh -ic "$HOME/Repos/dotfiles/config/hypr/scripts/mofa/$file"
     ;;
   emacs | emacsclient)
     echo "$1 is not running, starting it now."

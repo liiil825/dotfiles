@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
+hide
+grim -g "$(slurp)" - | swappy -f -
+quit

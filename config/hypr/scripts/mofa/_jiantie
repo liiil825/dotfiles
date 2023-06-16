@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+. $CURRENT_DIR/utils-jiantie.sh
+
+COMMANDS=(
+  "copy"
+  "copy-from-bigdata"
+  "copy-from-tag"
+  "copy-from-image"
+  "copy-from-static"
+  "fixed"
+  "remove-fixed"
+  "remove"
+  "remove-from-static"
+  "clear"
+  "tag-add"
+  "tag-add-fiexed"
+  "tag-add-static"
+  "tag-remove"
+  "tag-clear"
+)
+selected_command=$(printf "%s\n" "${COMMANDS[@]}" | fzf --prompt="command  ")
+[ -z $selected_command ] && quit
+
+# set some colors
+CNT="[\e[1;36mNOTE\e[0m]"
+
+main() {
+  case "$selected_command" in
+  copy-from-tag)
+    echo -e "$CNT 请输入想要查找的标签，多个标签使用‘,’分隔。\n"
+    read TAGS
+    ;;
+  *)
+    echo
+    ;;
+  esac
+
+  alias fzf-selector="fzf --delimiter \" \" --with-nth='2..' --preview \"jiantie decode {} -m\" --preview-window=right,65%"
+  case "$1" in
+  "--data-type")
+    selected=$(jiantie list --format "id,type,data,tags" --data-type $2 | fzf-selector)
+    ;;
+  "--tags")
+    selected=$(jiantie list --format "id,type,data,tags" --tags "$TAGS" | fzf-selector)
+    ;;
+  *)
+    selected=$(jiantie list --format "id,type,data,tags" | fzf-selector)
+    ;;
+  esac
+  [[ -z $selected ]] && quit
+  selected_id=$(echo "$selected" | cut -f 1 -d ' ')
+  selected_type=$(echo "$selected" | cut -f 2 -d ' ')
+  selected_type=$(parse_type $selected_type)
+
+  case "$selected_command" in
+  tag-add | tag-add-static | tag-add-fiexed)
+    echo -e "$CNT 请输入想要添加的标签名称，多个名称使用‘,’分隔。\n"
+    read TAGS
+    ;;
+  tag-remove)
+    echo -e "$CNT 请输入想要删除的标签名称，多个名称使用‘,’分隔。\n"
+    read TAGS
+    ;;
+  *)
+    echo
+    ;;
+  esac
+
+  case "$selected_command" in
+  copy | copy-from-tag)
+    jiantie get "$selected_id" --data-type "$selected_type" --format "data" | wl-copy
+    ;;
+  copy-from-static)
+    jiantie get "$selected_id" --data-type "$selected_type" --format "data" | wl-copy
+    jiantie change "$selected_id"
+    ;;
+  remove | remove-from-static)
+    jiantie delete "$selected_id" -t "$selected_type"
+    ;;
+  fixed)
+    jiantie get "$selected_id" --data-type "$selected_type" --format "data" | wl-copy
+    jiantie change "$selected_id"
+    ;;
+  remove-fixed)
+    jiantie change "$selected_id" -f 3 -t 0
+    ;;
+  tag-remove)
+    jiantie tag "$selected_id" remove "$TAGS" -t "$selected_type"
+    ;;
+  tag-clear)
+    jiantie get "$selected_id" --data-type "$selected_type" --format "data" | wl-copy
+    jiantie tag "$selected_id" clear -t "$selected_type"
+    ;;
+  tag-add | tag-add-static)
+    jiantie tag "$selected_id" add "$TAGS" -t "$selected_type"
+    jiantie get "$selected_id" --data-type "$selected_type" --format "data" | wl-copy
+    ;;
+  tag-add-fiexed)
+    jiantie tag "$selected_id" add "$TAGS" -t "$selected_type"
+    jiantie get "$selected_id" --data-type "$selected_type" --format "data" | wl-copy
+    jiantie change "$selected_id"
+    ;;
+  *) ;;
+  esac
+  quit
+}
+
+case "$selected_command" in
+copy-from-static)
+  main --data-type 3
+  ;;
+copy-from-bigdata)
+  main --data-type 2
+  ;;
+copy-from-image)
+  main --data-type 1
+  ;;
+copy-from-tag)
+  main --tags
+  ;;
+fixed)
+  main --data-type 0
+  ;;
+remove-fixed | remove-from-static)
+  main --data-type 3
+  ;;
+tag-add-static)
+  main --data-type 3
+  ;;
+clear)
+  jiantie clear
+  ;;
+*)
+  main
+  ;;
+esac

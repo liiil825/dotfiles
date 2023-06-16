@@ -32,6 +32,12 @@ close_apps() {
     rm $LOCKFILE
     pkill -x alacritty
   fi
+  local LOCKFILE="/tmp/kitty.lock"
+  if [ -e $LOCKFILE ]; then
+    echo "close kitty"
+    rm $LOCKFILE
+    pkill -x kitty
+  fi
   local LOCKFILE="/tmp/emacsclient.lock"
   if [ -e $LOCKFILE ]; then
     echo "close emacsclient"

@@ -1,10 +1,6 @@
 {
     "layer": "top", // Waybar at top layer
     "height": 30,   // Waybar height (to be removed for auto height)
-    // "padding-top": 6,
-    // "padding-bottom": 6,
-    // "padding-left": 10,
-    // "padding-right": 10,
     "spacing": 2,   // Gaps between modules (4px)
     "modules-left": [
       "wlr/workspaces",
@@ -14,9 +10,12 @@
     "modules-center": [
       "idle_inhibitor",
       "custom/time",
+      //"hyprland/window",
       "custom/updates"
     ],
     "modules-right": [
+      // "custom/wl-gammarelay-temperature",
+      // "custom/wl-gammarelay-brightness",
       "cpu",
       "memory",
       "tray",
@@ -64,7 +63,7 @@
       "tooltip-format": "<big>{:%Y-%m-%d}</big>\n<tt>{calendar}</tt>",
     },
     "custom/time": {
-      "format": "<span color='#FF5C57'> </span>{}",
+      "format": "{}",
       "exec": "~/.config/waybar/scripts/time.sh",
       "interval": 60
     },
@@ -132,8 +131,20 @@
         "tooltip" : true,
         "format" : "{}",
         "interval" : 300,
-        "exec" : "~/.config/waybar/scripts/weather.py",
+        "exec" : "seniverse-weather",
         "return-type" : "json"
+    },
+    "custom/wl-gammarelay-temperature": {
+      "format": "{} ",
+      "exec": "wl-gammarelay --subscribe Temperature",
+      "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +100",
+      "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -100"
+    },
+    "custom/wl-gammarelay-brightness": {
+      "format": "{} ",
+      "exec": "wl-gammarelay --subscribe Brightness",
+      "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.02",
+      "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.02"
     },
 
     "temperature": {
@@ -141,7 +152,7 @@
         "format": "",
         "format-alt-click": "click-right",
         "format-alt": " {temperatureC}°C",
-        "critical-threshold": 70,
+        "critical-threshold": 65,
         "format-critical": " {temperatureC}°C",
         "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
     },

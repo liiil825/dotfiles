@@ -28,9 +28,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 fi
 
 ### set symlink all of the above pacakges ####
-read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set there software symlink to .config (\e[1;36mtmux bin alacritty kitty lazygit ripgrep keyd waybar\e[0m) (y,n)' INST
+read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set there software symlink to .config (\e[1;36mtmux bin alacritty kitty template lazygit gammastep ripgrep keyd waybar\e[0m) (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
-  for SOFTWR in tmux bin alacritty kitty lazygit ripgrep keyd waybar; do
+  for SOFTWR in tmux bin alacritty kitty template gammastep lazygit ripgrep keyd waybar; do
     ln -sf "$(pwd)/config/$SOFTWR" $HOME/.config
   done
 fi
@@ -48,7 +48,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 fi
 
 ## install onagre
-read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set  \e[1;36monagre\e[0m symlink to .config (y,n)' INST
+read -n1 -rep $'[\e[1;33mACTION\e[0m] - Would you like to set \e[1;36monagre\e[0m symlink link to .config (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
   ln -sf "$(pwd)/config/onagre" $HOME/.config
 fi

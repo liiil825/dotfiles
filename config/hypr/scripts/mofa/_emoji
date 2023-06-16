@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
 emoji_list() {
   cat <<EOF
 😀 grinning face
@@ -20,8 +23,8 @@ emoji_list() {
 😗 kissing face
 😙 kissing face with smiling eyes
 😚 kissing face with closed eyes
-☺️ smiling face
-☺ smiling face
+☺️  smiling face
+☺  smiling face
 🙂 slightly smiling face
 🤗 hugging face
 🤩 star-struck
@@ -56,8 +59,8 @@ emoji_list() {
 😲 astonished face
 
 
-☹️ frowning face
-☹ frowning face
+☹️  frowning face
+☹  frowning face
 🙁 slightly frowning face
 😖 confounded face
 😞 disappointed face
@@ -2755,52 +2758,52 @@ emoji_list() {
 🌜 last quarter moon face
 🌡️ thermometer
 🌡 thermometer
-☀️ sun
-☀ sun
-🌝 full moon face
-🌞 sun with face
-⭐ star
-🌟 glowing star
-🌠 shooting star
-☁️ cloud
-☁ cloud
-⛅ sun behind cloud
-⛈️ cloud with lightning and rain
-⛈ cloud with lightning and rain
-🌤️ sun behind small cloud
-🌤 sun behind small cloud
-🌥️ sun behind large cloud
-🌥 sun behind large cloud
-🌦️ sun behind rain cloud
-🌦 sun behind rain cloud
-🌧️ cloud with rain
-🌧 cloud with rain
-🌨️ cloud with snow
-🌨 cloud with snow
-🌩️ cloud with lightning
-🌩 cloud with lightning
-🌪️ tornado
-🌪 tornado
-🌫️ fog
-🌫 fog
-🌬️ wind face
-🌬 wind face
-🌀 cyclone
-🌈 rainbow
+☀️  sun weather
+☀  sun weather
+🌝 full moon face weather
+🌞 sun with face weather
+⭐ star weather
+🌟 glowing star weather
+🌠 shooting star weather
+☁️  cloud weather
+☁  cloud weather
+⛅ sun behind cloud weather
+⛈️  cloud with lightning and rain weather
+⛈  cloud with lightning and rain weather
+🌤️  sun behind small cloud weather
+🌤  sun behind small cloud weather
+🌥️  sun behind large cloud weather
+🌥  sun behind large cloud weather
+🌦️  sun behind rain cloud weather
+🌦  sun behind rain cloud weather
+🌧️  cloud with rain weather
+🌧  cloud with rain weather
+🌨️  cloud with snow weather
+🌨  cloud with snow weather
+🌩️  cloud with lightning weather
+🌩  cloud with lightning weather
+🌪️  tornado weather
+🌪  tornado weather
+🌫️  fog weather
+🌫  fog weather
+🌬️  wind face weather
+🌬  wind face weather
+🌀 cyclone weather
+🌈 rainbow weather
 🌂 closed umbrella
 ☂️ umbrella
 ☂ umbrella
 ☔ umbrella with rain drops
 ⛱️ umbrella on ground
 ⛱ umbrella on ground
-⚡ high voltage
-❄️ snowflake
-❄ snowflake
+⚡ high voltage weather
+❄️  snowflake weather
+❄  snowflake weather
 ☃️ snowman
 ☃ snowman
 ⛄ snowman without snow
-☄️ comet
-☄ comet
+☄️  comet
+☄  comet
 🔥 fire
 💧 droplet
 🌊 water wave
@@ -3550,7 +3553,7 @@ emoji_list() {
 🇨🇰 Cook Islands
 🇨🇱 Chile
 🇨🇲 Cameroon
-🇨🇳 China
+🇨🇳  China
 🇨🇴 Colombia
 🇨🇵 Clipperton Island
 🇨🇷 Costa Rica
@@ -3736,7 +3739,7 @@ emoji_list() {
 🇹🇷 Turkey
 🇹🇹 Trinidad & Tobago
 🇹🇻 Tuvalu
-🇹🇼 Taiwan
+🇹🇼  Taiwan China
 🇹🇿 Tanzania
 🇺🇦 Ukraine
 🇺🇬 Uganda
@@ -3769,5 +3772,6 @@ EOF
 }
 
 selected="$(emoji_list | grep -v -e '^[[:space:]]*$' | fzf -e -i -m --reverse | awk '{print $1}')"
-[ -z "$selected" ] && exit
+[ -z "$selected" ] && quit
 printf "%s" "$selected" | wl-copy
+quit

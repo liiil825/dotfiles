@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
+selected=$(
+  jiantie list --format "id,type,data,tags" | fzf --delimiter " " --with-nth='2..' --preview "jiantie decode {} -m" \
+    --preview-window=right,65%
+)
+
+[[ -z $selected ]] && quit
+
+jiantie decode "$selected" --format "data" | wl-copy
+quit

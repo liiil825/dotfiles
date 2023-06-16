@@ -7,7 +7,7 @@ fi
 
 # Calculate updates for each service
 AUR=$(yay -Qua | wc -l)
-OFFICIAL=$(pacman -Qu | wc -l)
+OFFICIAL=$(checkupdates | wc -l)
 COUNT=$((OFFICIAL + AUR))
 
 show() {

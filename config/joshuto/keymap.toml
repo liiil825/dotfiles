@@ -125,6 +125,7 @@ keymap = [
 	{ keys = [ "g", "e" ],		command = "cd /etc" },
 	{ keys = [ "g", "h" ],		command = "cd ~/" },
 	{ keys = [ "g", "j" ],		command = "cd /mnt/openwrt/" },
+	{ keys = [ "g", "k" ],		command = "cd /run/media/david/HB" },
 	{ keys = [ "?" ],		command = "help" }
 ]
 

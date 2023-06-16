@@ -25,7 +25,7 @@ window:
     x: 20
     y: 20
   dynamic_padding: false
-  # decorations: buttonless
+  dynamic_title: true
 
 # NOTE: helpful hex codes
 # \x1b = escape (useful for vim-related keybindings)
@@ -41,7 +41,6 @@ key_bindings:
  - { key: Minus,     mods: Command,         chars: "\x07\""   } # split tmux window vertically
  - { key: G,         mods: Command|Shift,   chars: "\x07g"    } # open git manager 'jesseduffield/lazygit'
  - { key: F,         mods: Command,         chars: "\x07\x54" } # open t - tmux smart session manager
- - { key: S,         mods: Command,         chars: "\x07s"    } # open interactive tmux session client
  - { key: P,         mods: Command,         chars: "\x07L"    } # switch to the last tmux session
  - { key: U,         mods: Command,         chars: "\x07u"    } # open URLs 'joshmedeski/tmux-fzf-url'
  - { key: A,         mods: Command,         chars: "\x07c"    } # create a new tmux window

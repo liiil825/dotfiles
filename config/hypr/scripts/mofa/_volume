@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
+# set some colors
+CNT="[\e[1;36mNOTE\e[0m]"
+
+echo -e "$CNT 请输入音量\n"
+read volume
+[ -z $volume ] && quit
+[ $volume -lt 0 ] && quit
+pamixer --set-volume $volume
+dunstify -a "VOLUME" "Decreasing to $volume%" -h int:value:"$volume" -i audio-volume-low-symbolic -r 2593 -u normal
+canberra-gtk-play -i audio-volume-change -d "changevolume"
+quit

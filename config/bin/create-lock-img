@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+img=$(fd 'lockscreen' --full-path $HOME/Pictures/lockscreen.jpeg)
+grim $img && convert -filter Gaussian -resize 20% -blur 0x2.5 -resize 500% $img $img

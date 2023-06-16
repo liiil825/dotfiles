@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
+selectd=$(fd . --full-path $CURRENT_DIR --type f | grep '_' | sort | fzf -e -i --delimiter _ --with-nth='2..')
+
+[[ -z $selectd ]] && quit
+
+sh $selectd

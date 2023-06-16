@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
+# COMMANDS=(
+#   "bash"
+#   "chatgpt"
+# )
+# selected_command=$(printf "%s\n" "${COMMANDS[@]}" | fzf --prompt="command  ")
+# [ -z $selected_command ] && quit
+
+TEXT=$(wl-paste)
+[[ -z $TEXT ]] && quit
+case "$COMMANDS" in
+chatgpt)
+  printf "%s" "$TEXT" | sd -f m '\\ $' '\' | wl-copy
+  ;;
+bash | *)
+  printf "%s" "$TEXT" | sd -f m '^\$ {0,1}' '' | wl-copy
+  ;;
+esac
+quit

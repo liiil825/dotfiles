@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+swaylock -e -f -i /home/david/Pictures/Screenshots/lockscreen.jpeg
