@@ -1,0 +1,59 @@
+.onagre {
+  --exit-unfocused: false;
+  height: 500px;
+  width: 600px;
+  --icon-theme: "Papirus";
+  --icon-size: 22px;
+  --font-family: "RobotoMono Nerd Font";
+  font-size: 12px;
+  background: #2E3440;
+  color: #81A1C1;
+  border-color: #2E3440;
+  border-radius: 25%;
+  border-width: 4px;
+  padding: 10px;
+
+  .container {
+    .search {
+      --spacing: 1;
+      background: #3B4252;
+      color: #D8DEE9;
+      padding: 4px;
+      --height: fill-portion 1;
+      .plugin-hint {
+        font-size: 9px;
+        color: #BF616A;
+        padding: 4px;
+        border-width: 2px;
+        border-color: #BF616A;
+        border-radius: 5%;
+        background: #4C566A;
+        --align-x: center;
+        --align-y: center;
+        --width: fill-portion 2;
+        --height: fill;
+      }
+
+      .input {
+        --width: fill-portion 11;
+      }
+
+    }
+
+    .rows {
+      --height: fill-portion 5;
+      .row-selected {
+        background: #2E3440;
+        color: #EBCB8B;
+        --spacing: 3px;
+        --align-y: center;
+      }
+    }
+
+    .scrollable {
+      .scroller {
+        color: #4C566A;
+      }
+    }
+  }
+}
