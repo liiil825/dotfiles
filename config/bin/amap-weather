@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+fetch() {
+  PUBLIC_KEY="76745a0f1a3b63b9944440765e36ca00"
+  URL="https://restapi.amap.com/v3/weather/weatherInfo"
+  LOCATION=$1
+  [[ -z $LOCATION ]] && LOCATION="420104"
+  TS=$(date +%s)
+  PARMS="city=$LOCATION&key=$PUBLIC_KEY"
+
+  data=$(curl "$URL?$PARMS")
+  # {"status":"1","count":"1","info":"OK","infocode":"10000","lives":[{"province":"湖北","city":"硚口区","adcode":"420104","weather":"晴","temperature":"30","winddirection":"东南","windpower":"≤3","humidity":"70","reporttime":"2023-06-20 11:02:24","temperature_float":"30.0","humidity_float":"70.0"}]}
+  echo "$data"
+}
+
+# weather="null"
+# while [[ true ]]; do
+#   if [[ $weather == "null" ]]; then
+#     data=$(fetch $1)
+#     weather=$(echo "$data" | jq -r '.lives[0].weather')
+#   else
+#     break
+#   fi
+#   sleep .1
+# done
+
+data=$(fetch $1)
+weather=$(echo "$data" | jq -r '.lives[0].weather')
+temperature=$(echo "$data" | jq -r '.lives[0].temperature')
+# weather=$(echo "$data" | jq -r '.lives[0].weather')
+weather_icon=""
+case "$weather" in
+"晴")
+  weather_icon="🌈"
+  ;;
+"少云")
+  weather_icon="🌤"
+  ;;
+"多云")
+  weather_icon="☁️"
+  ;;
+"晴间多云")
+  weather_icon="🌥"
+  ;;
+"阵雨")
+  # 10 阵雨 Shower
+  weather_icon="⛈️"
+  ;;
+"雷阵雨")
+  # 11 雷阵雨 Thundershower
+  weather_icon="⛈️"
+  ;;
+"雷阵雨并伴有冰雹")
+  # 12 雷阵雨伴有冰雹 Thundershower with Hail
+  weather_icon="🌨️"
+  ;;
+*)
+  weather_icon="❓ $weather"
+  ;;
+esac
+
+TEXT="$weather_icon  $temperature"
+DATA=$(python3 ~/.config/waybar/scripts/weather.py)
+tooltip=$(echo $DATA | jq -c ".tooltip")
+echo "{\"text\": \"$TEXT\", \"tooltip\": $tooltip}"

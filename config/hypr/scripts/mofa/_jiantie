@@ -24,9 +24,6 @@ COMMANDS=(
 selected_command=$(printf "%s\n" "${COMMANDS[@]}" | fzf --prompt="command  ")
 [ -z $selected_command ] && quit
 
-# set some colors
-CNT="[\e[1;36mNOTE\e[0m]"
-
 main() {
   case "$selected_command" in
   copy-from-tag)

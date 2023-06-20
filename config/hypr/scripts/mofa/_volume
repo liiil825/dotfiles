@@ -11,6 +11,6 @@ read volume
 [ -z $volume ] && quit
 [ $volume -lt 0 ] && quit
 pamixer --set-volume $volume
-dunstify -a "VOLUME" "Decreasing to $volume%" -h int:value:"$volume" -i audio-volume-low-symbolic -r 2593 -u normal
+dunstify -a "VOLUME" "调整音量到 $volume%" -h int:value:"$volume" -i audio-volume-low-symbolic -r 2593 -u normal
 canberra-gtk-play -i audio-volume-change -d "changevolume"
 quit

@@ -10,7 +10,7 @@
     "modules-center": [
       "idle_inhibitor",
       "custom/time",
-      //"hyprland/window",
+      "hyprland/window",
       "custom/updates"
     ],
     "modules-right": [
@@ -131,7 +131,7 @@
         "tooltip" : true,
         "format" : "{}",
         "interval" : 300,
-        "exec" : "seniverse-weather",
+        "exec" : "amap-weather",
         "return-type" : "json"
     },
     "custom/wl-gammarelay-temperature": {

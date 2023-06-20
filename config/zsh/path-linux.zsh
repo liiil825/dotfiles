@@ -20,3 +20,7 @@ export CARGO_NET_GIT_FETCH_WITH_CLI=true
 
 # c++ 库管理
 export VCPKG_ROOT=$HOME/vcpkg
+
+hash -d hs=$HOME/.config/hypr/scripts
+hash -d ms=$HOME/.config/hypr/scripts/mofa/
+hash -d ws=$HOME/.config/waybar/scripts

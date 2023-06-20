@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+. $CURRENT_DIR/utils.sh
+
+COMMANDS=(
+  "copy"
+  "copy-from-name"
+  "create"
+  "create-special-password"
+  "delete"
+  "sync"
+)
+
+selected_command=$(printf "%s\n" "${COMMANDS[@]}" | fzf --prompt="command  ")
+[ -z $selected_command ] && quit
+
+alias bw="/home/david/.local/share/pnpm/bw"
+list() {
+  case "$selected_command" in
+  copy)
+    data=$(bw list items)
+    ;;
+  copy-from-name)
+    echo -e "$CNT 请输入想要查找的名称。\n"
+    read NAME
+    data=$(bw list items --search $NAME)
+    ;;
+  esac
+  items=$(echo "$data" | jq -r '.[] | "\(.login.password) \(.name) \(.login.username)"')
+  echo "$items" | fzf --delimiter " " --with-nth='2..' | cut -f 1 -d ' ' | wl-copy
+}
+
+create() {
+  echo -e "$CNT 请输入创建记录名称和登录名称。NAME,USERNAME\n"
+  read INPUT
+  if [[ -z $(echo "$INPUT" | grep ",") ]]; then
+    name=$(echo "$INPUT")
+    username=""
+  else
+    name=$(echo "$INPUT" | cut -f 1 -d ',')
+    username=$(echo "$INPUT" | cut -f 2 -d ',')
+  fi
+  if [ -z $1 ]; then
+    password=$(bw generate -lun --length 18)
+  else
+    password=$(bw generate -lusn --length 18)
+  fi
+  login=$(bw get template item.login | jq ".username=\"$username\" | .password=\"$password\" | .totp=\"\"")
+  bw get template item | jq ".name=\"$name\" | .notes=\"\" | .login=$(echo "$login")" | bw encode | bw create item
+  echo "$password" | wl-copy
+}
+
+case "$selected_command" in
+copy | copy-from-name)
+  list
+  ;;
+delete)
+  data=$(bw list items)
+  items=$(echo "$data" | jq -r '.[] | "\(.id) \(.name) \(.login.username)"')
+  selected_id=$(echo "$items" | fzf --delimiter " " --with-nth='2..' | cut -f 1 -d ' ')
+  bw delete item "$selected_id"
+  ;;
+create)
+  create
+  ;;
+create-special-password)
+  create 1
+  ;;
+sync)
+  bw sync
+  ;;
+*) ;;
+esac
+
+quit

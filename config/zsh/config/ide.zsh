@@ -3,11 +3,10 @@
 alias nvim-astro="NVIM_APPNAME=nvim-astro nvim"
 alias nvim-lazy="NVIM_APPNAME=nvim-lazy nvim"
 alias nvim-chad="NVIM_APPNAME=nvim-nvchad nvim"
-alias nvim-lunar="NVIM_APPNAME=nvim-lunar nvim"
 
 function nvims() {
-    itemNames=("default" "LazyVim" "NvChad" "AstroNvim" "LunarNvim")
-    itemAlias=("default" "nvim-lazy" "nvim-nvchad" "nvim-astro" "nvim-lunar")
+    itemNames=("default" "LazyVim" "NvChad" "AstroNvim")
+    itemAlias=("default" "nvim-lazy" "nvim-nvchad" "nvim-astro")
     config=$(printf "%s\n" "${itemNames[@]}" | fzf --prompt=" Neovim Config  "\
         --height=50% --layout=reverse --border --exit-0)
 
@@ -32,7 +31,7 @@ function nvims() {
 }
 
 function nvim_change() {
-    alias nvim="NVIM_APPNAME=nvim-$1 OPENAI_API_KEY=${OPENAI_API_KEY} nvim"
+    alias nvim="NVIM_APPNAME=nvim-$1 nvim"
 }
 
 function nvim_clean() {

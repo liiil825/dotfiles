@@ -4,11 +4,8 @@ CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 . $CURRENT_DIR/utils.sh
 
 desktop_file() {
-  find /usr/share/applications -name "*.desktop" 2>/dev/null &&
-    find /usr/local/share/applications -name "*.desktop" 2>/dev/null &&
-    find "$HOME/.local/share/applications" -name "*.desktop" 2>/dev/null &&
-    find /var/lib/flatpak/exports/share/applications -name "*.desktop" 2>/dev/null &&
-    find "$HOME/.local/share/flatpak/exports/share/applications" -name "*.desktop" 2>/dev/null
+  find /usr/share/applications -name "*.desktop" 2>/dev/null
+  find "$HOME/.local/share/applications" -name "*.desktop" 2>/dev/null
 }
 
 selected="$(desktop_file | sed 's/.desktop//g' | sort | fzf -e -i -m --reverse --delimiter / --with-nth -1)"

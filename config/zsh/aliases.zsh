@@ -28,6 +28,8 @@ alias grep='grep --color'
 alias gst='git status'
 alias gwl='git worktree list'
 
+alias hx='helix'
+
 alias md='mkdir -p'
 alias ra="ranger"
 alias rd=rmdir
