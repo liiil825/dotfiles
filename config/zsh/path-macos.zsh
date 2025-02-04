@@ -19,13 +19,15 @@ export PATH=$PATH:$ANDROID/tools
 
 export PATH=$PATH:node_modules/.bin
 
-export GOROOT=/usr/local/go/
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export GOARCH=amd64
-export GOOS=darwin
-export GO15VENDOREXPERIMENT=1
-export GOPROXY=https://goproxy.cn
+# export GOROOT=/usr/local/go/
+# export GOPATH=$HOME/.go
+# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# export GOARCH=amd64
+# export GOOS=darwin
+# export GO15VENDOREXPERIMENT=1
+# export GOPROXY=https://goproxy.cn
+
+export PATH=$PATH:$HOME/go/bin
 
 export JAVA_HOME=/usr/libexec/java_home
 export PATH=$PATH:$JAVA_HOME/bin

@@ -10,3 +10,6 @@ for the_file ($ZSH_CUSTOM/config/*.zsh); do
 done
 
 source $ZSH_CUSTOM/aliases.zsh
+
+# Added by Windsurf
+export PATH="/Users/lizhi/.codeium/windsurf/bin:$PATH"

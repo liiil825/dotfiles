@@ -35,9 +35,9 @@ fi
 eval "$(zoxide init zsh)"
 [[ $(uname -n) == *"-opencloudos" ]] && return
 
-MARKER_KEY_GET="\e."               # <Alt-.>, default by C-Space
-MARKER_KEY_MARK="\em"              # <Alt-m>, default C-m
-MARKER_KEY_NEXT_PLACEHOLDER="\ep"  # <Alt-p> default C-t
+# MARKER_KEY_GET="\e."               # <Alt-.>, default by C-Space
+# MARKER_KEY_MARK="\em"              # <Alt-m>, default C-m
+# MARKER_KEY_NEXT_PLACEHOLDER="\ep"  # <Alt-p> default C-t
 if [[ -s "$HOME/.local/share/marker/marker.sh" ]]; then
     source "$HOME/.local/share/marker/marker.sh"
 else
