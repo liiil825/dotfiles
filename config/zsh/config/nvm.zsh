@@ -2,7 +2,7 @@
 
 [[ $SYSTEM_PLATFORM == "opencloud"* ]] && return
 
-export NVM_DIR=$HOME/.config/.nvm
+export NVM_DIR=$HOME/.nvm
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"

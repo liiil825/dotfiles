@@ -37,6 +37,8 @@ export PATH=$PATH:/usr/local/opt/gettext/bin
 export EVERNOTE_DEV_TOKEN="S=s442:U=4873e9a:E=16b77592d54:C=1641fa7ff88:P=1cd:A=en-devtoken:V=2:H=52ac1633d6df14e2e08c1aea0a295dc7"
 export GEEKNOTE_BASE=yinxiang
 
+# rust
+source $HOME/.cargo/env
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
@@ -52,3 +54,7 @@ export PKG_CONFIG_PATH="/usr/local/opt/icu4c/lib/pkgconfig"
 export PATH=$PATH:/usr/local/texlive/2020/bin/x86_64-darwin
 export PATH=$PATH:/usr/local/opt/python@3.9/bin/
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+
+# Added by Windsurf
+export PATH="/Users/lizhi/.codeium/windsurf/bin:$PATH"
+

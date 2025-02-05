@@ -22,7 +22,6 @@ fpath=(
     $fpath
 )
 
-[[ $SYSTEM_PLATFORM == "macos" ]] && . $HOME/.cargo/env
 [[ -d $CACHEDIR ]] || mkdir -p $CACHEDIR
 [[ -f $HOME/.zshenv.local ]] && source $HOME/.zshenv.local
 
